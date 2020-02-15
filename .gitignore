@@ -1,0 +1,10 @@
+# Каталоги
+.idea/
+out/
+
+# Файлы
+thgame.iml
+
+# Mac
+.DS_Store
+
