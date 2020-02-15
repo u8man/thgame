@@ -92,7 +92,7 @@ public class Game {
         GL.createCapabilities();
 
         // Set the clear color
-        glClearColor(0.2f, 0.6f, 0.4f, 0.0f);
+        glClearColor(0.8f, 0.6f, 0.4f, 0.0f);
 
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
