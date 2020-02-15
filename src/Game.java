@@ -74,12 +74,13 @@ public class Game {
             );
         } // the stack frame is popped automatically
 
-        // Make the OpenGL context current
+        // Создает текущий контекст OpenGL
         glfwMakeContextCurrent(window);
-        // Enable v-sync
+
+        // Включает V-Sync
         glfwSwapInterval(1);
 
-        // Make the window visible
+        // Делает окно видимым
         glfwShowWindow(window);
     }
 
@@ -97,12 +98,12 @@ public class Game {
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+            // очищает буфер вывода
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            glfwSwapBuffers(window); // swap the color buffers
+            glfwSwapBuffers(window);
 
-            // Poll for window events. The key callback above will only be
-            // invoked during this call.
+            // Опрос событий окна
             glfwPollEvents();
         }
     }
