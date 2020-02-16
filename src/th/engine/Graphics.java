@@ -16,8 +16,8 @@ public class Graphics {
         mWindow = window;
     }
 
-    // Инициализирует OpenGL
-    public void initOpenGL() {
+    // Инициализирует
+    public void init() {
         GL.createCapabilities();
         glClearColor(0.32f, 0.6f, 0.4f, 0.0f);
 

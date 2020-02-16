@@ -41,7 +41,7 @@ public class Game {
 
             window.init();
             init();
-            graphics.initOpenGL();
+            graphics.init();
 
             long now, last = System.nanoTime();
             double delta = 0.0;
