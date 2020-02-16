@@ -20,6 +20,11 @@ public class Graphics {
     public void initOpenGL() {
         GL.createCapabilities();
         glClearColor(0.32f, 0.6f, 0.4f, 0.0f);
+
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        glOrtho(0, mWindow.getWidth(), mWindow.getHeight(), 0, 1, -1);
+        glMatrixMode(GL_MODELVIEW);
     }
 
     // Очищает буфер вывода
