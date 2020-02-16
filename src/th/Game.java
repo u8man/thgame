@@ -23,7 +23,7 @@ public class Game {
     public static final String TITLE = "TH Game " + VERSION;
 
     // V-Sync
-    public static final boolean VSYNC = true;
+    public static final boolean VSYNC = false;
 
 
     // Конструтор класса
