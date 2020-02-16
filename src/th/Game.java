@@ -40,8 +40,8 @@ public class Game {
             Graphics graphics = new Graphics(window);
 
             window.init();
-            init();
             graphics.init();
+            init();
 
             long now, last = System.nanoTime();
             double delta = 0.0;
@@ -51,6 +51,8 @@ public class Game {
             int fps = 0;
 
             while (!window.shouldClose()) {
+                graphics.clear();
+
                 now = System.nanoTime();
                 delta += (now - last) / ns;
                 last = now;
@@ -62,7 +64,6 @@ public class Game {
                     ups++;
                 }
 
-                graphics.clear();
                 render(graphics);
 
                 window.swapBuffers();
