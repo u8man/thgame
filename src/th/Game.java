@@ -43,15 +43,38 @@ public class Game {
             init();
             graphics.initOpenGL();
 
-            while (!window.shouldClose()) {
-                graphics.clear();
+            long now, last = System.nanoTime();
+            double delta = 0.0;
+            double ns = 1_000_000_000.0 / 60.0;
+            long timer = System.currentTimeMillis();
+            int ups = 0;
+            int fps = 0;
 
-                input(input);
-                update();
+            while (!window.shouldClose()) {
+                now = System.nanoTime();
+                delta += (now - last) / ns;
+                last = now;
+
+                if (delta >= 1.0) {
+                    input(input);
+                    update(delta);
+                    delta--;
+                    ups++;
+                }
+
+                graphics.clear();
                 render(graphics);
 
                 window.swapBuffers();
                 window.pollEvents();
+
+                fps++;
+
+                if ((System.currentTimeMillis() - timer) > 1000) {
+                    timer += 1000;
+                    Log.console("UPS: " + ups + ", FPS: " + fps);
+                    ups = fps = 0;
+                }
             }
 
             terminate();
@@ -78,7 +101,7 @@ public class Game {
     }
 
     // Обновляет логику
-    public void update() {
+    public void update(double delta) {
         //
     }
 
