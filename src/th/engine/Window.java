@@ -69,9 +69,7 @@ public class Window {
 
         glfwMakeContextCurrent(mWindow);
 
-        if (mVsync) {
-            glfwSwapInterval(1);
-        }
+        glfwSwapInterval(mVsync ? 1 : 0);
 
         glfwShowWindow(mWindow);
     }
