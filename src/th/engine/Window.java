@@ -103,5 +103,15 @@ public class Window {
     public void close() {
         glfwSetWindowShouldClose(mWindow, true);
     }
+
+    // Получает ширину окна
+    public int getWidth() {
+        return mWidth;
+    }
+
+    // Получает высоту окна
+    public int getHeight() {
+        return mHeight;
+    }
 }
 
