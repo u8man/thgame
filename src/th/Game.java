@@ -17,7 +17,7 @@ public class Game {
     public static final int WIDTH = 360;
 
     // Высота окна
-    public static final int HEIGTH = 640;
+    public static final int HEIGHT = 640;
 
     // Заголовок окна
     public static final String TITLE = "TH Game " + VERSION;
@@ -34,7 +34,7 @@ public class Game {
     // Запускает
     public void run() {
         try {
-            Window window = new Window(WIDTH, HEIGTH, TITLE, VSYNC);
+            Window window = new Window(WIDTH, HEIGHT, TITLE, VSYNC);
 
             Input input = new Input(window);
             Graphics graphics = new Graphics(window);
