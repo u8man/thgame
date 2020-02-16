@@ -43,18 +43,16 @@ public class Game {
             graphics.init();
             init();
 
-            long now, last = System.nanoTime();
             double delta = 0.0;
-            double ns = 1_000_000_000.0 / 60.0;
+            long now, last = System.nanoTime();
             long timer = System.currentTimeMillis();
-            int ups = 0;
-            int fps = 0;
+            int ups = 0, fps = 0;
 
             while (!window.shouldClose()) {
                 graphics.clear();
 
                 now = System.nanoTime();
-                delta += (now - last) / ns;
+                delta += (now - last) / (1_000_000_000.0 / 60.0);
                 last = now;
 
                 if (delta >= 1.0) {
@@ -65,9 +63,7 @@ public class Game {
                 }
 
                 render(graphics);
-
                 window.swapBuffers();
-                window.pollEvents();
 
                 fps++;
 
@@ -76,6 +72,8 @@ public class Game {
                     Log.console("UPS: " + ups + ", FPS: " + fps);
                     ups = fps = 0;
                 }
+
+                window.pollEvents();
             }
 
             terminate();
