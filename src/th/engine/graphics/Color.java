@@ -52,24 +52,44 @@ public class Color {
         return false;
     }
 
-    // Получает красный
+    // Получает красный (0.0 - 1.0)
     public float getRed() {
         return mR;
     }
 
-    // Получает Зеленый
+    // Получает Зеленый (0.0 - 1.0)
     public float getGreen() {
         return mG;
     }
 
-    // Получает синий
+    // Получает синий (0.0 - 1.0)
     public float getBlue() {
         return mB;
     }
 
-    // Получает прозрачность
+    // Получает прозрачность (0.0 - 1.0)
     public float getAlpha() {
         return mA;
+    }
+
+    // Получает красный  (0 - 255)
+    public int getRedByte() {
+        return (int) (mR * 255);
+    }
+
+    // Получает Зеленый  (0 - 255)
+    public int getGreenByte() {
+        return (int) (mG * 255);
+    }
+
+    // Получает синий  (0 - 255)
+    public int getBlueByte() {
+        return (int) (mB * 255);
+    }
+
+    // Получает прозрачность (0 - 255)
+    public int getAlphaByte() {
+        return (int) (mA * 255);
     }
 }
 
