@@ -8,6 +8,8 @@ import static org.lwjgl.glfw.Callbacks.*;
 
 /**
  * Окно
+ *
+ * todo: добавить метод для установки иконки окна
  */
 public class Window {
 
