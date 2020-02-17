@@ -111,5 +111,16 @@ public class Window {
     public int getHeight() {
         return mHeight;
     }
+
+    // Получает заголовок окна
+    public String getTitle() {
+        return mTitle;
+    }
+
+    // Устанавливает заголовок окна
+    public void setTitle(String title) {
+        mTitle = title;
+        glfwSetWindowTitle(mWindow, title);
+    }
 }
 
