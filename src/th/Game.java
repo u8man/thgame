@@ -1,6 +1,7 @@
 package th;
 
 import th.engine.*;
+import th.engine.graphics.Color;
 
 public class Game extends Core {
 
@@ -17,7 +18,7 @@ public class Game extends Core {
 
     // Инициализирует
     public void init() {
-        //
+        setBackgroundColor(new Color(0.32f, 0.6f, 0.4f, 0.0f));
     }
 
     // Завершает
