@@ -5,38 +5,36 @@ import th.engine.graphics.Color;
 
 public class Game extends Core {
 
-    // Точка входа
     public static void main(String[] args) {
         new Game().run();
     }
 
 
-    // Конструктор
     public Game() {
         super(360, 640, "TH Game 0.1.0", false, true);
     }
 
-    // Инициализирует
+    @Override
     public void init() {
         setBackgroundColor(new Color(80, 140, 100));
     }
 
-    // Завершает
+    @Override
     public void terminate() {
         //
     }
 
-    // Обрабатывает контроллеры ввода
+    @Override
     public void input(Input input) {
         //
     }
 
-    // Обновляет логику
+    @Override
     public void update(double delta) {
         //
     }
 
-    // Отрисовывает объекты
+    @Override
     public void render(Graphics g) {
         //
     }
