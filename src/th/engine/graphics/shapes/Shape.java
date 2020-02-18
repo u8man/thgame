@@ -1,21 +1,17 @@
 package th.engine.graphics.shapes;
 
-import th.engine.graphics.Color;
-
 /**
- * Фигура
+ * Базовый класс фигуры
  */
 public abstract class Shape {
 
     protected float mPosX, mPosY;
-    protected Color mColor;
 
 
     // Конструктор
-    public Shape(float x, float y, Color color) {
+    public Shape(float x, float y) {
         mPosX = x;
         mPosY = y;
-        mColor = color;
     }
 
     // Рисует фигуру
@@ -26,7 +22,7 @@ public abstract class Shape {
         return mPosX;
     }
 
-    // Устснавливает положение фигуры по оси X
+    // Устанавливает положение фигуры по оси X
     public void setPosX(float x) {
         mPosX = x;
     }
@@ -36,14 +32,9 @@ public abstract class Shape {
         return mPosY;
     }
 
-    // Устснавливает положение фигуры по оси Y
+    // Устанавливает положение фигуры по оси Y
     public void setPosY(float y) {
         mPosY = y;
-    }
-
-    // Получает цвет фигуры
-    public Color getColor() {
-        return mColor;
     }
 }
 
