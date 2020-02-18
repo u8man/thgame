@@ -95,7 +95,7 @@ abstract public class Core {
             mWindow.terminate();
         }
         catch (Exception ex) {
-            Log.console("ERROR: " + ex.getMessage());
+            if (isDebug()) ex.printStackTrace();
         }
     }
 
