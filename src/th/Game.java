@@ -18,7 +18,7 @@ public class Game extends Core {
 
     // Инициализирует
     public void init() {
-        setBackgroundColor(new Color(0.32f, 0.6f, 0.4f, 0.0f));
+        setBackgroundColor(new Color(80, 140, 100));
     }
 
     // Завершает
