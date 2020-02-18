@@ -1,5 +1,7 @@
 package th.engine;
 
+import th.engine.graphics.Color;
+
 /**
  * Ядро
  *
@@ -8,6 +10,7 @@ package th.engine;
 abstract public class Core {
 
     protected Window mWindow;
+    protected Graphics mGraphics;
 
     protected static boolean mDebug = false;
 
@@ -30,6 +33,7 @@ abstract public class Core {
         if (debug) title = title + "  [debug: on]";
         mDebug = debug;
         mWindow = new Window(width, height, title, vsync);
+        mGraphics = new Graphics(mWindow);
     }
 
     // Инициализирует игровые данные
@@ -51,10 +55,9 @@ abstract public class Core {
     public void run() {
         try {
             Input input = new Input(mWindow);
-            Graphics graphics = new Graphics(mWindow);
 
             mWindow.init();
-            graphics.init();
+            mGraphics.init();
             init();
 
             double delta = 0.0;
@@ -62,7 +65,7 @@ abstract public class Core {
             long timer = System.currentTimeMillis();
 
             while (!mWindow.shouldClose()) {
-                graphics.clear();
+                mGraphics.clear();
 
                 now = System.nanoTime();
                 delta += (now - last) / (1_000_000_000.0 / 60.0);
@@ -75,7 +78,7 @@ abstract public class Core {
                     delta--;
                 }
 
-                render(graphics);
+                render(mGraphics);
                 mWindow.swapBuffers();
 
                 mFps++;
@@ -94,6 +97,11 @@ abstract public class Core {
         catch (Exception ex) {
             Log.console("ERROR: " + ex.getMessage());
         }
+    }
+
+    // Устанавливает цвет фона
+    public void setBackgroundColor(Color color) {
+        mGraphics.setClearColor(color);
     }
 
     // Получает частоту обновления игровой логики в секунду
