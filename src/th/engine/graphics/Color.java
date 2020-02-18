@@ -18,7 +18,7 @@ public class Color {
 
     // Конструктор (0.0 - 1.0)
     public Color(float r, float g, float b) {
-        this(r, g, b, 1.0f);
+        this(r, g, b, 0.0f);
     }
 
     // Конструктор (0.0 - 1.0)
@@ -31,7 +31,7 @@ public class Color {
 
     // Конструктор (0 - 255)
     public Color(int r, int g, int b) {
-        this(r, g, b, 255);
+        this(r, g, b, 0);
     }
 
     // Конструктор (0 - 255)
