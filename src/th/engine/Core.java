@@ -34,7 +34,7 @@ abstract public class Core {
         if (debug) title = title + "  [debug: on]";
         mDebug = debug;
         mWindow = new Window(width, height, title, vsync);
-        mGraphics = new Graphics(mWindow);
+        mGraphics = new Graphics(width, height);
         mInput = new Input(mWindow);
     }
 
