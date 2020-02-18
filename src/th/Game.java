@@ -3,6 +3,7 @@ package th;
 import org.lwjgl.opengl.GL11;
 import th.engine.*;
 import th.engine.graphics.Color;
+import th.engine.graphics.shapes.Rectangle;
 import th.engine.graphics.shapes.Triangle;
 
 public class Game extends Core {
@@ -51,6 +52,11 @@ public class Game extends Core {
         t.draw();
         t.setPosY((float)mWindow.getHeight() / 2 + 100);
         t.draw();
+        GL11.glColor4f(0.5f, 0.5f, 0.0f, 0.3f);
+        Rectangle r = new Rectangle(25.0f, 50.0f);
+        r.setPosX((float)mWindow.getWidth() / 2 + 37.5f);
+        r.setPosY((float)mWindow.getHeight() / 2 + 100);
+        r.draw();
     }
 }
 
