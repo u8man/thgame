@@ -1,4 +1,4 @@
-package th.game.objects.trains;
+package th.game.trains;
 
 /**
  * Тепловоз

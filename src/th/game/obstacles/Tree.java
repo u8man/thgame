@@ -1,4 +1,4 @@
-package th.game.objects.obstacles;
+package th.game.obstacles;
 
 /**
  * Дерево

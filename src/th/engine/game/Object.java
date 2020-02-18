@@ -1,9 +1,9 @@
-package th.game.objects;
+package th.engine.game;
 
 /**
  * Интерфейс игрового объекта
  */
-public interface GameObject {
+public interface Object {
     //
 }
 

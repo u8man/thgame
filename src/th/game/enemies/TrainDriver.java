@@ -1,4 +1,4 @@
-package th.game.objects.enemies;
+package th.game.enemies;
 
 /**
  * Машинист поезда

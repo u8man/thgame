@@ -1,4 +1,4 @@
-package th.game.objects.environs;
+package th.game.environs;
 
 /**
  * Пешеходы

@@ -1,4 +1,4 @@
-package th.engine.graphics.shapes;
+package th.engine.graphics;
 
 /**
  * Базовый класс фигуры

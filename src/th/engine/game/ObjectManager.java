@@ -1,4 +1,4 @@
-package th.game;
+package th.engine.game;
 
 /**
  * Менеджер игровых объектов
