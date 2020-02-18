@@ -11,6 +11,7 @@ abstract public class Core {
 
     protected Window mWindow;
     protected Graphics mGraphics;
+    protected Input mInput;
 
     protected static boolean mDebug = false;
 
@@ -34,6 +35,7 @@ abstract public class Core {
         mDebug = debug;
         mWindow = new Window(width, height, title, vsync);
         mGraphics = new Graphics(mWindow);
+        mInput = new Input(mWindow);
     }
 
     // Инициализирует игровые данные
@@ -54,8 +56,6 @@ abstract public class Core {
     // Запускает игру
     public void run() {
         try {
-            Input input = new Input(mWindow);
-
             mWindow.init();
             mGraphics.init();
             init();
@@ -72,7 +72,7 @@ abstract public class Core {
                 last = now;
 
                 if (delta >= 1.0) {
-                    input(input);
+                    input(mInput);
                     update(delta);
                     mUps++;
                     delta--;
