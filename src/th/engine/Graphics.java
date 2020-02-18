@@ -36,5 +36,10 @@ public class Graphics {
     public void setClearColor(Color color) {
         glClearColor(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
     }
+
+    // Устанавливает текущий цвет рисования
+    public void setColor(Color color) {
+        glColor4f(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+    }
 }
 
