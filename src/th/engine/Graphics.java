@@ -1,6 +1,7 @@
 package th.engine;
 
 import org.lwjgl.opengl.GL;
+import th.engine.graphics.Color;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -19,7 +20,6 @@ public class Graphics {
     // Инициализирует
     public void init() {
         GL.createCapabilities();
-        glClearColor(0.32f, 0.6f, 0.4f, 0.0f);
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
@@ -30,6 +30,11 @@ public class Graphics {
     // Очищает буфер вывода
     public void clear() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
+
+    // Устанавливает цвет очистки фона
+    public void setClearColor(Color color) {
+        glClearColor(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
     }
 }
 
