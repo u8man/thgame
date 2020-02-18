@@ -3,6 +3,7 @@ package th;
 import org.lwjgl.opengl.GL11;
 import th.engine.*;
 import th.engine.graphics.Color;
+import th.engine.graphics.shapes.Circle;
 import th.engine.graphics.shapes.Rectangle;
 import th.engine.graphics.shapes.Triangle;
 
@@ -57,6 +58,12 @@ public class Game extends Core {
         r.setPosX((float)mWindow.getWidth() / 2 + 37.5f);
         r.setPosY((float)mWindow.getHeight() / 2 + 100);
         r.draw();
+        GL11.glColor4f(0.0f, 0.0f, 1.0f, 0.5f);
+        float[] center = {(float)mWindow.getWidth() / 2, (float)mWindow.getHeight() / 2};
+        Circle circle = new Circle(10.0f);
+        circle.setPosX((float)mWindow.getWidth() / 2);
+        circle.setPosY((float)mWindow.getHeight() / 2);
+        circle.draw();
     }
 }
 
