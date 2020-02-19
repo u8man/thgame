@@ -1,27 +1,26 @@
 package th.engine.graphics.shapes;
 
-import org.lwjgl.opengl.GL11;
 import th.engine.graphics.Shape;
+
+import static org.lwjgl.opengl.GL11.*;
 
 public class Triangle extends Shape {
 
-    private float[] mA;
-    private float[] mB;
-    private float[] mC;
+    private float mWidth;
+    private float mHeight;
 
-    public Triangle(float[] a, float[] b, float[] c) {
-        mA = a;
-        mB = b;
-        mC = c;
+    public Triangle(float width, float height) {
+        mWidth = width;
+        mHeight = height;
     }
 
     @Override
     public void draw() {
-        GL11.glBegin(GL11.GL_TRIANGLES);
-        GL11.glVertex2f(mA[0] + getPosX(), mA[1] + getPosY());
-        GL11.glVertex2f(mB[0] + getPosX(), mB[1] + getPosY());
-        GL11.glVertex2f(mC[0] + getPosX(), mC[1] + getPosY());
-        GL11.glEnd();
+        glBegin(GL_TRIANGLES);
+        glVertex2f(mXPos + (mWidth / 2), mYPos);
+        glVertex2f(mXPos, mYPos + mHeight);
+        glVertex2f(mXPos + mWidth, mYPos + mHeight);
+        glEnd();
     }
 }
 
