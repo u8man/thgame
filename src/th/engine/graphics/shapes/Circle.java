@@ -5,11 +5,10 @@ import th.engine.graphics.Shape;
 
 public class Circle extends Shape {
 
-    float[] mCenter;
-    float mRadius;
+    private float[] mCenter;
+    private float mRadius;
 
     public Circle(float radius) {
-        super(0.0f, 0.0f);
         mRadius = radius;
     }
 
@@ -23,3 +22,4 @@ public class Circle extends Shape {
         GL11.glEnd();
     }
 }
+

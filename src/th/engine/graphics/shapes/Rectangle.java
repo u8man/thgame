@@ -5,10 +5,10 @@ import th.engine.graphics.Shape;
 
 public class Rectangle extends Shape {
 
-    float mWidth, mHeight;
+    private float mWidth;
+    private float mHeight;
 
     public Rectangle(float width, float height) {
-        super(0.0f, 0.0f);
         mWidth = width;
         mHeight = height;
     }
@@ -23,3 +23,4 @@ public class Rectangle extends Shape {
         GL11.glEnd();
     }
 }
+

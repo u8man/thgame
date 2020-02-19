@@ -4,9 +4,10 @@ import org.lwjgl.opengl.GL11;
 import th.engine.graphics.Shape;
 
 public class Line extends Shape {
+
     private float[] mB;
+
     public Line(float[] a, float[] b) {
-        super(a[0], a[1]);
         mB = b;
     }
 
@@ -18,3 +19,4 @@ public class Line extends Shape {
         GL11.glEnd();
     }
 }
+

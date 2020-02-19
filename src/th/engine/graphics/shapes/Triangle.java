@@ -5,10 +5,11 @@ import th.engine.graphics.Shape;
 
 public class Triangle extends Shape {
 
-    private float[] mA, mB, mC;
+    private float[] mA;
+    private float[] mB;
+    private float[] mC;
 
     public Triangle(float[] a, float[] b, float[] c) {
-        super(0, 0);
         mA = a;
         mB = b;
         mC = c;
@@ -23,3 +24,4 @@ public class Triangle extends Shape {
         GL11.glEnd();
     }
 }
+
