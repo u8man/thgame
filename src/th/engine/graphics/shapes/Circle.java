@@ -1,6 +1,5 @@
 package th.engine.graphics.shapes;
 
-import th.engine.Log;
 import th.engine.graphics.Shape;
 
 import static org.lwjgl.opengl.GL11.*;
