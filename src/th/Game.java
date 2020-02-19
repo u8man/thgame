@@ -1,11 +1,7 @@
 package th;
 
-import org.lwjgl.opengl.GL11;
 import th.engine.*;
 import th.engine.graphics.Color;
-import th.engine.graphics.shapes.Circle;
-import th.engine.graphics.shapes.Rectangle;
-import th.engine.graphics.shapes.Triangle;
 
 public class Game extends Core {
 
