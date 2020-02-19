@@ -5,36 +5,36 @@ package th.engine.graphics;
  */
 public abstract class Shape {
 
-    protected float mPosX;
-    protected float mPosY;
+    protected float mXPos = 0.0f;
+    protected float mYPos = 0.0f;
 
     // Рисует фигуру
     abstract public void draw();
 
     // Устанавливае положение фигуры
     public void setPosition(float x, float y) {
-        mPosX = x;
-        mPosY = y;
+        mXPos = x;
+        mYPos = y;
     }
 
     // Получает положение фигуры по оси X
-    public float getPosX() {
-        return mPosX;
+    public float getXPos() {
+        return mXPos;
     }
 
     // Устанавливает положение фигуры по оси X
-    public void setPosX(float x) {
-        mPosX = x;
+    public void setXPos(float x) {
+        mXPos = x;
     }
 
     // Получает положение фигуры по оси Y
-    public float getPosY() {
-        return mPosY;
+    public float getYPos() {
+        return mYPos;
     }
 
     // Устанавливает положение фигуры по оси Y
-    public void setPosY(float y) {
-        mPosY = y;
+    public void setYPos(float y) {
+        mYPos = y;
     }
 }
 
