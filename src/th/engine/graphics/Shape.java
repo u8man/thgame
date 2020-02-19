@@ -5,17 +5,17 @@ package th.engine.graphics;
  */
 public abstract class Shape {
 
-    protected float mPosX, mPosY;
-
-
-    // Конструктор
-    public Shape(float x, float y) {
-        mPosX = x;
-        mPosY = y;
-    }
+    protected float mPosX;
+    protected float mPosY;
 
     // Рисует фигуру
     abstract public void draw();
+
+    // Устанавливае положение фигуры
+    public void setPosition(float x, float y) {
+        mPosX = x;
+        mPosY = y;
+    }
 
     // Получает положение фигуры по оси X
     public float getPosX() {
