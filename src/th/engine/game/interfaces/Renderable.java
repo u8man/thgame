@@ -1,4 +1,4 @@
-package th.engine.graphics;
+package th.engine.game.interfaces;
 
 import th.engine.Graphics;
 

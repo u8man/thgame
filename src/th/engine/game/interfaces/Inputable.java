@@ -1,4 +1,4 @@
-package th.engine.input;
+package th.engine.game.interfaces;
 
 import th.engine.Input;
 
