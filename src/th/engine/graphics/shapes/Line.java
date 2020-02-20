@@ -1,7 +1,8 @@
 package th.engine.graphics.shapes;
 
-import org.lwjgl.opengl.GL11;
 import th.engine.graphics.Shape;
+
+import static org.lwjgl.opengl.GL11.*;
 
 public class Line extends Shape {
 
@@ -13,10 +14,10 @@ public class Line extends Shape {
 
     @Override
     public void draw() {
-        GL11.glBegin(GL11.GL_LINES);
-        GL11.glVertex2f(mPosX, mPosY);
-        GL11.glVertex2f(mB[0], mB[1]);
-        GL11.glEnd();
+        glBegin(GL_LINES);
+        glVertex2f(mXPos, mYPos);
+        glVertex2f(mB[0], mB[1]);
+        glEnd();
     }
 }
 
