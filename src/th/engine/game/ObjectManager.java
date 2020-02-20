@@ -53,7 +53,7 @@ public class ObjectManager {
                 remove(object);
             }
         }
-        // Обновляем
+        // Обновляем состояние
         for (Object object : mObjects) {
             if (object instanceof Updatable) {
                 ((Updatable) object).update(this);
@@ -68,6 +68,11 @@ public class ObjectManager {
                 ((Renderable) object).render(g);
             }
         }
+    }
+
+    // Получает массив объектов
+    public ArrayList<Object> getObjects() {
+        return mObjects;
     }
 }
 
