@@ -11,7 +11,6 @@ abstract public class Core {
 
     protected Window mWindow;
     protected Graphics mGraphics;
-    protected Input mInput;
 
     protected static boolean mDebug = false;
 
@@ -35,7 +34,6 @@ abstract public class Core {
         mDebug = debug;
         mWindow = new Window(width, height, title, vsync);
         mGraphics = new Graphics(width, height);
-        mInput = new Input(mWindow);
     }
 
     // Инициализирует игровые данные
@@ -64,6 +62,8 @@ abstract public class Core {
             long now, last = System.nanoTime();
             long timer = System.currentTimeMillis();
 
+            Input input = mWindow.getInput();
+
             while (!mWindow.shouldClose()) {
                 mGraphics.clear();
 
@@ -72,7 +72,7 @@ abstract public class Core {
                 last = now;
 
                 if (delta >= 1.0) {
-                    input(mInput);
+                    input(input);
                     update(delta);
                     mUps++;
                     delta--;
