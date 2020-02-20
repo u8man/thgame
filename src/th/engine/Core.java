@@ -45,7 +45,7 @@ abstract public class Core {
     abstract public void input(Input input);
 
     // Обновляет логику игры
-    abstract public void update(double delta);
+    abstract public void update();
 
     // Отрисовывает игровые объекты
     abstract public void render(Graphics g);
@@ -76,7 +76,7 @@ abstract public class Core {
                 if (delta >= 1.0) {
                     input(input);
                     if (!isPaused()) {
-                        update(delta);
+                        update();
                     }
                     delta--;
                     mUps++;

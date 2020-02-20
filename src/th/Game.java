@@ -33,7 +33,7 @@ public class Game extends Core {
     }
 
     @Override
-    public void update(double delta) {
+    public void update() {
         //
     }
 
