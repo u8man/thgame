@@ -1,13 +1,16 @@
 package th.engine;
 
+import th.engine.game.Updatable;
 import th.engine.graphics.Color;
+import th.engine.graphics.Renderable;
+import th.engine.input.Inputable;
 
 /**
  * Ядро
  *
  * todo: разделить потоки окна и игрового цикла
  */
-abstract public class Core {
+abstract public class Core implements Renderable, Inputable, Updatable {
 
     protected Window mWindow;
     protected Graphics mGraphics;
