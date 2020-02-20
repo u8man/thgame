@@ -17,6 +17,7 @@ public class Railway extends Object implements Renderable, Updatable {
     private float mStartDrawSleepers = -(mSleeperSize) ;
     private int mEndDrawSleepers = 640 + (mSleeperSize);
     private float mSpeed = 1.4f;
+    private boolean mMove = false;
 
     public Railway(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Railway);
@@ -30,6 +31,16 @@ public class Railway extends Object implements Renderable, Updatable {
     // Получает скорость движения
     public float getSpeed() {
         return mSpeed;
+    }
+
+    // Запускает или останавливает движение
+    public void setMove(boolean move) {
+        mMove = move;
+    }
+
+    // Проверят, движется или нет железная дорога
+    public boolean isMove() {
+        return mMove;
     }
 
     @Override
