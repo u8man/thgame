@@ -1,6 +1,6 @@
 package th.engine.game;
 
 public interface Updatable {
-    public void update();
+    public void update(ObjectManager om);
 }
 
