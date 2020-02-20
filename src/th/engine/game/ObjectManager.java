@@ -48,11 +48,8 @@ public class ObjectManager {
     // Обновляет содержимое объекта
     public void update() {
         // Удаляем помеченные на удаление объекты
-        for (Object object : mObjects) {
-            if (object.isRemoved()) {
-                remove(object);
-            }
-        }
+        mObjects.removeIf(Object::isRemoved);
+
         // Обновляем состояние
         for (Object object : mObjects) {
             if (object instanceof Updatable) {
