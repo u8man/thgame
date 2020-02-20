@@ -1,5 +1,6 @@
 package th.engine.game;
 
+import th.engine.Core;
 import th.engine.Graphics;
 import th.engine.Input;
 import th.engine.game.interfaces.Inputable;
@@ -13,7 +14,17 @@ import java.util.ArrayList;
  */
 public class ObjectManager {
 
+    private Core mGame;
     private ArrayList<Object> mObjects = new ArrayList<Object>(256);
+
+    public ObjectManager(Core game) {
+        mGame = game;
+    }
+
+    // Получает экземпляр игры
+    public Core getGame() {
+        return mGame;
+    }
 
     // Добавляет объект
     public void add(Object object) {
