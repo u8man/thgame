@@ -45,10 +45,12 @@ public class Railway extends Object implements Renderable, Updatable {
 
     @Override
     public void update(ObjectManager om) {
-        mStartDrawSleepers += mSpeed;
+        if (isMove()) {
+            mStartDrawSleepers += mSpeed;
 
-        if (mStartDrawSleepers >= mSleeperSize) {
-            mStartDrawSleepers = -(mSleeperSize);
+            if (mStartDrawSleepers >= mSleeperSize) {
+                mStartDrawSleepers = -(mSleeperSize);
+            }
         }
     }
 
@@ -57,13 +59,13 @@ public class Railway extends Object implements Renderable, Updatable {
         // Шпалы
         g.setColor(new Color(128, 89, 80));
         for (float i = mStartDrawSleepers; i < mEndDrawSleepers; i += 32.0f) {
-            g.draw(new Rectangle(116, mSleeperSize), mXPos - 54, mYPos + i);
+            g.draw(new Rectangle(116, mSleeperSize), getXPos() - 54, getYPos() + i);
         }
 
         // Рельсы
         g.setColor(new Color(80, 80, 80));
-        g.draw(new Rectangle(8, 640), mXPos - 44, mYPos);
-        g.draw(new Rectangle(8, 640), mXPos + 44, mYPos);
+        g.draw(new Rectangle(8, 640), getXPos() - 44, getYPos());
+        g.draw(new Rectangle(8, 640), getXPos() + 44, getYPos());
     }
 }
 
