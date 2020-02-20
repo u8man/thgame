@@ -114,6 +114,10 @@ public class Window {
         return mHeight;
     }
 
+    public Input getInput() {
+        return new Input(mWindow);
+    }
+
     // Получает заголовок окна
     public String getTitle() {
         return mTitle;
