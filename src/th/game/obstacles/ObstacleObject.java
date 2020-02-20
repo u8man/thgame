@@ -5,7 +5,7 @@ import th.engine.game.Object;
 /**
  * Объект препятствия
  */
-public abstract class ObstacleObject implements Object {
+public abstract class ObstacleObject extends Object {
     //
 }
 

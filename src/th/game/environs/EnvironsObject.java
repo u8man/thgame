@@ -5,7 +5,7 @@ import th.engine.game.Object;
 /**
  * Объект окружения
  */
-public abstract class EnvironsObject implements Object {
+public abstract class EnvironsObject extends Object {
     //
 }
 

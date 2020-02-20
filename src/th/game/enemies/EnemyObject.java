@@ -5,7 +5,7 @@ import th.engine.game.Object;
 /**
  * Объект противника
  */
-public abstract class EnemyObject implements Object {
+public abstract class EnemyObject extends Object {
     //
 }
 
