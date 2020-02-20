@@ -22,6 +22,16 @@ public class Railway extends Object implements Renderable, Updatable {
         super(xPos, yPos, ObjectType.Railway);
     }
 
+    // Устанавливает скорость движения
+    public void setSpeed(float speed) {
+        mSpeed = speed;
+    }
+
+    // Получает скорость движения
+    public float getSpeed() {
+        return mSpeed;
+    }
+
     @Override
     public void update(ObjectManager om) {
         mStartDrawSleepers += mSpeed;
