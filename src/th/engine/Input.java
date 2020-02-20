@@ -1,15 +1,22 @@
 package th.engine;
 
+import static org.lwjgl.glfw.GLFW.*;
+
 /**
- * Ввод
+ * Устройства ввода
  */
 public class Input {
 
-    protected Window mWindow;
+    private long mWindow;
 
     // Конструктор
-    public Input(Window window) {
+    public Input(long window) {
         mWindow = window;
     }
+
+    public boolean isKeyPressed(int key) {
+        return glfwGetKey(mWindow, key) == GLFW_TRUE;
+    }
+
 }
 
