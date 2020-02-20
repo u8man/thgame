@@ -118,5 +118,15 @@ abstract public class Core {
     public static boolean isDebug() {
         return mDebug;
     }
+
+    // Получает ширину окна
+    public int getWidth() {
+        return mWindow.getWidth();
+    }
+
+    // Получает высоту окна
+    public int getHeight() {
+        return mWindow.getHeight();
+    }
 }
 
