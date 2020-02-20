@@ -24,7 +24,10 @@ public class Game extends Core {
         setBackgroundColor(new Color(80, 140, 100));
         mOM = new ObjectManager(this);
 
-        mOM.add(new Railway(180, 0));
+        Railway rWay = new Railway(180, 0);
+        rWay.setSpeed(2);
+        rWay.setMove(true);
+        mOM.add(rWay);
 
         resume();
     }
