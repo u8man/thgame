@@ -1,10 +1,14 @@
 package th;
 
 import th.engine.*;
+import th.engine.game.ObjectManager;
 import th.engine.graphics.Color;
 import th.engine.input.Keyboard;
+import th.game.Railway;
 
 public class Game extends Core {
+
+    private ObjectManager mOM;
 
     public static void main(String[] args) {
         new Game().run();
@@ -18,6 +22,11 @@ public class Game extends Core {
     @Override
     public void init() {
         setBackgroundColor(new Color(80, 140, 100));
+        mOM = new ObjectManager(this);
+
+        mOM.add(new Railway(180, 0));
+
+        resume();
     }
 
     @Override
@@ -30,16 +39,18 @@ public class Game extends Core {
         if (input.isKeyPressed(Keyboard.KEY_ESCAPE)) {
             stop();
         }
+
+        mOM.input(input);
     }
 
     @Override
     public void update() {
-        //
+        mOM.update();
     }
 
     @Override
     public void render(Graphics g) {
-        //
+        mOM.render(g);
     }
 }
 
