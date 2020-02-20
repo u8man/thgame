@@ -17,6 +17,8 @@ abstract public class Core {
     protected int mUps = 0;
     protected int mFps = 0;
 
+    protected boolean mPaused = false;
+
 
     // Конструктор (3)
     public Core(int width, int height, String title) {
@@ -73,9 +75,11 @@ abstract public class Core {
 
                 if (delta >= 1.0) {
                     input(input);
-                    update(delta);
-                    mUps++;
+                    if (!isPaused()) {
+                        update(delta);
+                    }
                     delta--;
+                    mUps++;
                 }
 
                 render(mGraphics);
@@ -127,6 +131,26 @@ abstract public class Core {
     // Получает высоту окна
     public int getHeight() {
         return mWindow.getHeight();
+    }
+
+    // Ставит игру на паузу
+    public void pause() {
+        mPaused = true;
+    }
+
+    // Проверяет, не стоит ли игра на паузе
+    public boolean isPaused() {
+        return mPaused;
+    }
+
+    // Возобновляет игру
+    public void resume() {
+        mPaused = false;
+    }
+
+    // Останавливает игру
+    public void stop() {
+        mWindow.close();
     }
 }
 
