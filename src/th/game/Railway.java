@@ -13,21 +13,31 @@ import th.engine.graphics.shapes.Rectangle;
  */
 public class Railway extends Object implements Renderable, Updatable {
 
+
+    private int mSleeperSize = 16;
+    private float mStartDrawSleepers = -(mSleeperSize) ;
+    private int mEndDrawSleepers = 640 + (mSleeperSize);
+    private float mSpeed = 1.4f;
+
     public Railway(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Railway);
     }
 
     @Override
     public void update(ObjectManager om) {
+        mStartDrawSleepers += mSpeed;
 
+        if (mStartDrawSleepers >= mSleeperSize) {
+            mStartDrawSleepers = -(mSleeperSize);
+        }
     }
 
     @Override
     public void render(Graphics g) {
         // Шпалы
         g.setColor(new Color(128, 89, 80));
-        for (int i = 8; i < 640; i += 32) {
-            g.draw(new Rectangle(116, 16), mXPos - 54, mYPos + i);
+        for (float i = mStartDrawSleepers; i < mEndDrawSleepers; i += 32.0f) {
+            g.draw(new Rectangle(116, mSleeperSize), mXPos - 54, mYPos + i);
         }
 
         // Рельсы
