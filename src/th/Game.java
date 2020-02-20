@@ -2,6 +2,7 @@ package th;
 
 import th.engine.*;
 import th.engine.graphics.Color;
+import th.engine.input.Keyboard;
 
 public class Game extends Core {
 
@@ -26,7 +27,9 @@ public class Game extends Core {
 
     @Override
     public void input(Input input) {
-        //
+        if (input.isKeyPressed(Keyboard.KEY_ESCAPE)) {
+            stop();
+        }
     }
 
     @Override
