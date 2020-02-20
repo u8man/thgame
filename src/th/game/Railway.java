@@ -13,7 +13,6 @@ import th.engine.graphics.shapes.Rectangle;
  */
 public class Railway extends Object implements Renderable, Updatable {
 
-
     private int mSleeperSize = 16;
     private float mStartDrawSleepers = -(mSleeperSize) ;
     private int mEndDrawSleepers = 640 + (mSleeperSize);
