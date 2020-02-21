@@ -7,7 +7,7 @@ import th.engine.game.interfaces.Inputable;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Updatable;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Менеджер игровых объектов
@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class ObjectManager {
 
     private Core mGame;
-    private HashMap<String, Object> mObjects = new HashMap<String, Object>();
+    private LinkedHashMap<String, Object> mObjects = new LinkedHashMap<String, Object>();
 
     // Добавляет объект
     public void add(String key, Object object) {
@@ -77,7 +77,7 @@ public class ObjectManager {
     }
 
     // Получает массив объектов
-    public HashMap<String, Object> getAllObjects() {
+    public LinkedHashMap<String, Object> getAllObjects() {
         return mObjects;
     }
 
