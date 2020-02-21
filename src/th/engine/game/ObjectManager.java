@@ -7,7 +7,7 @@ import th.engine.game.interfaces.Inputable;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Updatable;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Менеджер игровых объектов
@@ -15,31 +15,37 @@ import java.util.ArrayList;
 public class ObjectManager {
 
     private Core mGame;
-    private ArrayList<Object> mObjects = new ArrayList<Object>(256);
-
-    public ObjectManager(Core game) {
-        mGame = game;
-    }
-
-    // Получает экземпляр игры
-    public Core getGame() {
-        return mGame;
-    }
+    private HashMap<String, Object> mObjects = new HashMap<String, Object>();
 
     // Добавляет объект
-    public void add(Object object) {
+    public void add(String key, Object object) {
         object.setObjectManager(this);
-        mObjects.add(object);
+        object.setId(key);
+        mObjects.put(key, object);
+    }
+
+    // Проверяет, содержит ли менеджер указанный объект по ключу
+    public boolean containsKey(String key) {
+        return mObjects.containsKey(key);
+    }
+
+    // Проверяет, содержит ли менеджер указанный объект
+    public boolean containsObject(Object object) {
+        return mObjects.containsValue(object);
     }
 
     // Удаляет объект
-    public void remove(Object object) {
-        mObjects.remove(object);
+    public void remove(String key) {
+        mObjects.remove(key);
+    }
+
+    public Object getObject(String key) {
+        return mObjects.get(key);
     }
 
     // Проверяет контроллеры ввода
     public void input(Input input) {
-        for (Object object : mObjects) {
+        for (Object object : mObjects.values()) {
             if (object instanceof Inputable) {
                 ((Inputable) object).input(input);
             }
@@ -48,11 +54,13 @@ public class ObjectManager {
 
     // Обновляет содержимое объекта
     public void update() {
-        // Удаляем помеченные на удаление объекты
-        mObjects.removeIf(Object::isRemoved);
-
-        // Обновляем состояние
-        for (Object object : mObjects) {
+        for (Object object : mObjects.values()) {
+            // Удаляем помеченные
+            if (object.isRemoved()) {
+                remove(object.getId());
+                continue;
+            }
+            // Обновляем состояние
             if (object instanceof Updatable) {
                 ((Updatable) object).update();
             }
@@ -61,7 +69,7 @@ public class ObjectManager {
 
     // Отрисовывает объекты
     public void render(Graphics g) {
-        for (Object object : mObjects) {
+        for (Object object : mObjects.values()) {
             if (object instanceof Renderable) {
                 ((Renderable) object).render(g);
             }
@@ -69,8 +77,22 @@ public class ObjectManager {
     }
 
     // Получает массив объектов
-    public ArrayList<Object> getObjects() {
+    public HashMap<String, Object> getAllObjects() {
         return mObjects;
+    }
+
+    // Очищает
+    public void clear() {
+        mObjects.clear();
+    }
+
+    public ObjectManager(Core game) {
+        mGame = game;
+    }
+
+    // Получает экземпляр игры
+    public Core getGame() {
+        return mGame;
     }
 }
 
