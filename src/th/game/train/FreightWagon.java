@@ -16,7 +16,7 @@ public class FreightWagon extends TrainObject  implements Renderable {
         super(xPos, yPos);
 
         switch (type) {
-            case 1: mFreightColor = new Color(190, 129, 49); break;
+            case 1: mFreightColor = new Color(198, 109, 39); break;
             case 2: mFreightColor = new Color(149, 61, 77); break;
             case 3: mFreightColor = new Color(17, 101, 163); break;
         }
