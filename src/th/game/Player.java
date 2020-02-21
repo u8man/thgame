@@ -38,17 +38,17 @@ public class Player extends Object implements Inputable, Updatable, Renderable {
         mDirectionOfMove = 0;
     }
 
-    // Получает направление движения игрока
+    // Получает направление движения
     public int getDirectionOfMove() {
         return mDirectionOfMove;
     }
 
-    // Устанавливает скорость движения поезда
+    // Устанавливает скорость движения
     public void setSpeed(float speed) {
         mSpeed = speed;
     }
 
-    // Получает скорость движения поезда
+    // Получает скорость движения
     public float getSpeed() {
         return mSpeed;
     }
