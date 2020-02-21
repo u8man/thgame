@@ -3,7 +3,6 @@ package th.game;
 import th.engine.Graphics;
 import th.engine.Input;
 import th.engine.game.Object;
-import th.engine.game.ObjectManager;
 import th.engine.game.interfaces.Updatable;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Inputable;
@@ -23,7 +22,7 @@ public class Player extends Object implements Inputable, Updatable, Renderable {
     }
 
     @Override
-    public void update(ObjectManager om) {
+    public void update() {
 
     }
 

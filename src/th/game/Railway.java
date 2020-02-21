@@ -2,7 +2,6 @@ package th.game;
 
 import th.engine.Graphics;
 import th.engine.game.Object;
-import th.engine.game.ObjectManager;
 import th.engine.game.interfaces.Updatable;
 import th.engine.game.interfaces.Renderable;
 import th.engine.graphics.Color;
@@ -44,7 +43,7 @@ public class Railway extends Object implements Renderable, Updatable {
     }
 
     @Override
-    public void update(ObjectManager om) {
+    public void update() {
         if (isMove()) {
             mStartDrawSleepers += mSpeed;
 

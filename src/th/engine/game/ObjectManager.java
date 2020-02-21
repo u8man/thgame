@@ -54,7 +54,7 @@ public class ObjectManager {
         // Обновляем состояние
         for (Object object : mObjects) {
             if (object instanceof Updatable) {
-                ((Updatable) object).update(this);
+                ((Updatable) object).update();
             }
         }
     }
