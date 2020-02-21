@@ -12,10 +12,10 @@ public class FreightWagon extends TrainObject  implements Renderable {
 
     private Color mFreightColor;
 
-    public FreightWagon(float xPos, float yPos, int type) {
+    public FreightWagon(float xPos, float yPos, int color) {
         super(xPos, yPos);
 
-        switch (type) {
+        switch (color) {
             case 1: mFreightColor = new Color(198, 109, 39); break;
             case 2: mFreightColor = new Color(149, 61, 77); break;
             case 3: mFreightColor = new Color(17, 101, 163); break;
