@@ -4,7 +4,9 @@ import th.engine.*;
 import th.engine.game.ObjectManager;
 import th.engine.graphics.Color;
 import th.engine.input.Keyboard;
+import th.game.Player;
 import th.game.Railway;
+import th.game.Train;
 
 public class Game extends Core {
 
@@ -16,7 +18,7 @@ public class Game extends Core {
 
 
     public Game() {
-        super(360, 640, "TH Game 0.1.0", false, true);
+        super(360, 640, "TH Game 0.1.0", true, true);
     }
 
     @Override
@@ -25,16 +27,23 @@ public class Game extends Core {
         mOM = new ObjectManager(this);
 
         Railway rWay = new Railway(180, 0);
+        mOM.add("Railway", rWay);
         rWay.setSpeed(2);
-        rWay.setMove(true);
-        mOM.add(rWay);
+        rWay.move();
+
+        Train train = new Train(120, -550);
+        mOM.add("Train", train);
+
+        Player player = new Player(167, 400);
+        mOM.add("Player", player);
+        player.setSpeed(1.8f);
 
         resume();
     }
 
     @Override
     public void terminate() {
-        //
+        mOM.clear();
     }
 
     @Override
