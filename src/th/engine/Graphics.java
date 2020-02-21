@@ -8,6 +8,8 @@ import static org.lwjgl.opengl.GL11.*;
 
 /**
  * Графика
+ *
+ * todo: Добавить метод для отрисовки строки
  */
 public class Graphics {
 
