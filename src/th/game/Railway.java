@@ -32,9 +32,14 @@ public class Railway extends Object implements Renderable, Updatable {
         return mSpeed;
     }
 
-    // Запускает или останавливает движение
-    public void setMove(boolean move) {
-        mMove = move;
+    // Запускает движение
+    public void move() {
+        mMove = true;
+    }
+
+    // Oстанавливает движение
+    public void stop() {
+        mMove = false;
     }
 
     // Проверят, движется или нет железная дорога
