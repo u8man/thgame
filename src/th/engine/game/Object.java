@@ -8,6 +8,7 @@ import th.engine.game.interfaces.Type;
 abstract public class Object {
 
     protected Type mType;
+    protected ObjectManager mObjectManager;
     protected float mXPos;
     protected float mYPos;
     protected boolean mRemoved = false;
@@ -16,6 +17,16 @@ abstract public class Object {
         mXPos = xPos;
         mYPos = yPos;
         mType = type;
+    }
+
+    // Устанавливает менеджера объектов
+    public void setObjectManager(ObjectManager objectManager) {
+        mObjectManager = objectManager;
+    }
+
+    // Получает экземпляр менеджера объектов
+    public ObjectManager getObjectManager() {
+        return mObjectManager;
     }
 
     // Получает тип игрового объекта

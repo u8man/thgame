@@ -28,6 +28,7 @@ public class ObjectManager {
 
     // Добавляет объект
     public void add(Object object) {
+        object.setObjectManager(this);
         mObjects.add(object);
     }
 
