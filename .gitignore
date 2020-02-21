@@ -4,6 +4,7 @@ out/
 
 # Файлы
 thgame.iml
+src/th/GameTest.java
 
 # Mac
 .DS_Store
