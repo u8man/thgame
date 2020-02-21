@@ -28,7 +28,7 @@ public class FreightWagon extends TrainObject  implements Renderable {
         g.setColor(new Color(51, 51, 51));
         g.draw(new Rectangle(128, 250), getXPos(), getYPos());
         // Прицеп
-        g.draw(new Rectangle(10, 30), getXPos()+59, getYPos()-20);
+        g.draw(new Rectangle(8, 30), getXPos()+61, getYPos()-20);
         // Груз
         g.setColor(mFreightColor);
         g.draw(new Rectangle(118, 240), getXPos()+5, getYPos()+5);
