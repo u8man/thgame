@@ -1,4 +1,4 @@
-package th.game.trains;
+package th.game.train;
 
 import th.engine.game.Object;
 import th.game.ObjectType;
