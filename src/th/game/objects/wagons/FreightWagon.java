@@ -19,16 +19,18 @@ public class FreightWagon extends Wagon {
         mId = id;
 
         switch (color) {
-            case 1: mFreightColor = new Color(198, 109, 39); break;
-            case 2: mFreightColor = new Color(149, 61, 77); break;
-            case 3: mFreightColor = new Color(17, 101, 163); break;
+            case 1: mFreightColor = new Color(208, 119, 49); break; // оранжевый
+            case 2: mFreightColor = new Color(159, 71, 87); break; // красный
+            case 3: mFreightColor = new Color(37, 114, 178); break; // синий
+            case 4: mFreightColor = new Color(97, 142, 38); break; // зеленый
+            case 5: mFreightColor = new Color(90, 90, 90); break; // серый
+            case 6: mFreightColor = new Color(77, 88, 181); break; // фиолетовый
         }
     }
 
     @Override
     public void update() {
         Train train = (Train) mObjectManager.get("Train");
-
         setYPos(train.getYPos() + (mId * 270));
     }
 
@@ -38,12 +40,12 @@ public class FreightWagon extends Wagon {
         if (getYPos() > -270 && getYPos() < mObjectManager.getGame().getHeight()) {
             g.setColor(new Color(51, 51, 51));
             // Прицеп
-            g.draw(new Rectangle(8, 30), getXPos()+61, getYPos());
-            // П латформа
-            g.draw(new Rectangle(128, 250), getXPos(), getYPos()+20);
+            g.draw(new Rectangle(8, 30), getXPos() + 61, getYPos());
+            // Платформа
+            g.draw(new Rectangle(128, 250), getXPos(), getYPos() + 20);
             // Груз
             g.setColor(mFreightColor);
-            g.draw(new Rectangle(118, 240), getXPos()+5, getYPos()+5+20);
+            g.draw(new Rectangle(118, 240), getXPos()+5, getYPos() + 25);
         }
     }
 }

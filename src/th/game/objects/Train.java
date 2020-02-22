@@ -29,7 +29,7 @@ public class Train extends Object implements Updatable {
     // Создает вагон
     public void createWagon(float x, float y) {
         mWagonId++;
-        mObjectManager.add("Wagon_" + (mWagonId), new FreightWagon(x, y, mWagonId, mRandom.nextInt(3) + 1));
+        mObjectManager.add("Wagon_" + (mWagonId), new FreightWagon(x, y, mWagonId, mRandom.nextInt(6) + 1));
     }
 
     @Override
