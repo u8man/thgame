@@ -1,11 +1,12 @@
-package th.game;
+package th.game.objects;
 
 import th.engine.Graphics;
 import th.engine.game.Object;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Updatable;
-import th.game.train.FreightWagon;
-import th.game.train.TrainObject;
+import th.game.ObjectType;
+import th.game.objects.wagons.FreightWagon;
+import th.game.objects.wagons.Wagon;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -16,7 +17,7 @@ import java.util.Random;
 public class Train extends Object implements Renderable, Updatable {
 
     Random mRandom = new Random(System.currentTimeMillis());
-    private ArrayList<TrainObject> mWagons = new ArrayList<TrainObject>(50);
+    private ArrayList<Wagon> mWagons = new ArrayList<Wagon>(50);
 
     // Конструктор поезда
     public Train(float xPos, float yPos) {
@@ -44,7 +45,7 @@ public class Train extends Object implements Renderable, Updatable {
 
         if (player.getDirectionOfMove() != 0) {
             // Движение вагонов
-            for (TrainObject wagon : mWagons) {
+            for (Wagon wagon : mWagons) {
                 if (player.getDirectionOfMove() > 0) {
                     // Вниз
                     wagon.setYPos(wagon.getYPos() + player.getSpeed());
@@ -59,7 +60,7 @@ public class Train extends Object implements Renderable, Updatable {
     @Override
     // Рисует поезд
     public void render(Graphics g) {
-        for (TrainObject wagon : mWagons) {
+        for (Wagon wagon : mWagons) {
             if (wagon instanceof Renderable) ((Renderable) wagon).render(g);
         }
     }

@@ -4,9 +4,9 @@ import th.engine.*;
 import th.engine.game.ObjectManager;
 import th.engine.graphics.Color;
 import th.engine.input.Keyboard;
-import th.game.Player;
-import th.game.Railway;
-import th.game.Train;
+import th.game.objects.Player;
+import th.game.objects.Railway;
+import th.game.objects.Train;
 
 public class Game extends Core {
 

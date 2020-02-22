@@ -1,4 +1,4 @@
-package th.game;
+package th.game.objects;
 
 import th.engine.Graphics;
 import th.engine.game.Object;
@@ -6,6 +6,7 @@ import th.engine.game.interfaces.Updatable;
 import th.engine.game.interfaces.Renderable;
 import th.engine.graphics.Color;
 import th.engine.graphics.shapes.Rectangle;
+import th.game.ObjectType;
 
 /**
  * Железная дорога

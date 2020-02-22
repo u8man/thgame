@@ -1,7 +1,5 @@
 package th.engine.game;
 
-import th.engine.game.interfaces.Type;
-
 /**
  * Интерфейс игрового объекта
  */

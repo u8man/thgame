@@ -1,14 +1,13 @@
-package th.game.train;
+package th.game.objects.wagons;
 
 import th.engine.Graphics;
-import th.engine.game.interfaces.Renderable;
 import th.engine.graphics.Color;
 import th.engine.graphics.shapes.Rectangle;
 
 /**
  * Грузовой вагон
  */
-public class FreightWagon extends TrainObject  implements Renderable {
+public class FreightWagon extends Wagon {
 
     private Color mFreightColor;
 

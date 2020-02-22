@@ -1,4 +1,4 @@
-package th.game;
+package th.game.objects;
 
 import th.engine.Graphics;
 import th.engine.Input;
@@ -10,9 +10,10 @@ import th.engine.graphics.Color;
 import th.engine.graphics.shapes.Circle;
 import th.engine.graphics.shapes.Rectangle;
 import th.engine.input.Keyboard;
+import th.game.ObjectType;
 
 /**
- * Игрок
+ * Класс игрока
  */
 public class Player extends Object implements Inputable, Updatable, Renderable {
 
