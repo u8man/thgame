@@ -1,98 +1,107 @@
 package th.engine.game;
 
-import th.engine.Core;
+import th.engine.Game;
 import th.engine.Graphics;
 import th.engine.Input;
 import th.engine.game.interfaces.Inputable;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Updatable;
 
-import java.util.LinkedHashMap;
+import java.util.*;
 
 /**
  * Менеджер игровых объектов
  */
-public class ObjectManager {
+public class ObjectManager implements Inputable, Updatable, Renderable {
 
-    private Core mGame;
-    private LinkedHashMap<String, Object> mObjects = new LinkedHashMap<String, Object>();
+    private Game mGame;
+    private List<ObjectData> mObjects = new ArrayList<>();
+
+    // Конструктор
+    public ObjectManager(Game game) {
+        mGame = game;
+    }
+
+    // Получает экземпляр текущей игры
+    public Game getGame() {
+        return mGame;
+    }
 
     // Добавляет объект
-    public void add(String key, Object object) {
+    public Object add(String name, Object object) {
+        return add(name, object, 1);
+    }
+
+    // Добавляет объект с указанием приоритета
+    public Object add(String name, Object object, int priority) {
         object.setObjectManager(this);
-        object.setId(key);
-        mObjects.put(key, object);
+        mObjects.add(new ObjectData(name, object, priority));
+        mObjects.sort(Comparator.comparing(ObjectData::getPriority));
+        return object;
     }
 
-    // Проверяет, содержит ли менеджер указанный объект по ключу
-    public boolean containsKey(String key) {
-        return mObjects.containsKey(key);
+    // Получает объект
+    public Object get(String name) {
+        return getData(name).getObject();
     }
 
-    // Проверяет, содержит ли менеджер указанный объект
-    public boolean containsObject(Object object) {
-        return mObjects.containsValue(object);
+    // Получает данные объекта
+    private ObjectData getData(String name) {
+        for (ObjectData data: mObjects) {
+            if (data.getName().equals(name)) {
+                return data;
+            }
+        }
+        return null;
     }
 
     // Удаляет объект
-    public void remove(String key) {
-        mObjects.remove(key);
-    }
-
-    public Object getObject(String key) {
-        return mObjects.get(key);
-    }
-
-    // Проверяет контроллеры ввода
-    public void input(Input input) {
-        for (Object object : mObjects.values()) {
-            if (object instanceof Inputable) {
-                ((Inputable) object).input(input);
-            }
+    public void remove(String name) {
+        ObjectData object = getData(name);
+        if (object != null) {
+            mObjects.remove(object);
         }
     }
 
-    // Обновляет содержимое объекта
-    public void update() {
-        for (Object object : mObjects.values()) {
-            // Удаляем помеченные
-            if (object.isRemoved()) {
-                remove(object.getId());
-                continue;
-            }
-            // Обновляем состояние
-            if (object instanceof Updatable) {
-                ((Updatable) object).update();
-            }
-        }
-    }
-
-    // Отрисовывает объекты
-    public void render(Graphics g) {
-        for (Object object : mObjects.values()) {
-            if (object instanceof Renderable) {
-                ((Renderable) object).render(g);
-            }
-        }
-    }
-
-    // Получает массив объектов
-    public LinkedHashMap<String, Object> getAllObjects() {
-        return mObjects;
-    }
-
-    // Очищает
+    // Очищает хранилище объектов
     public void clear() {
         mObjects.clear();
     }
 
-    public ObjectManager(Core game) {
-        mGame = game;
+    @Override
+    // Передает управление от контоллеров ввода объектам
+    public void input(Input input) {
+        for (ObjectData data : mObjects) {
+            if (data.getObject() instanceof Inputable) {
+                ((Inputable) data.getObject()).input(input);
+            }
+        }
     }
 
-    // Получает экземпляр игры
-    public Core getGame() {
-        return mGame;
+    @Override
+    // Обновляет состояние объектов
+    public void update() {
+        for (ObjectData data : mObjects) {
+            // Удаляем помеченные
+            if (data.getObject().isRemoved()) {
+                mObjects.remove(data);
+                continue;
+            }
+            // Обновляем состояние
+            if (data.getObject() instanceof Updatable) {
+                ((Updatable) data.getObject()).update();
+            }
+        }
+    }
+
+    @Override
+    // Отрисовывает объекты
+    public void render(Graphics g) {
+        for (ObjectData data : mObjects) {
+            if (data.getObject() instanceof Renderable) {
+                ((Renderable) data.getObject()).render(g);
+            }
+        }
     }
 }
 

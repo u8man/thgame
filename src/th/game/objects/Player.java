@@ -3,7 +3,6 @@ package th.game.objects;
 import th.engine.Graphics;
 import th.engine.Input;
 import th.engine.game.Object;
-import th.engine.game.interfaces.Updatable;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Inputable;
 import th.engine.graphics.Color;
@@ -15,7 +14,7 @@ import th.game.ObjectType;
 /**
  * Класс игрока
  */
-public class Player extends Object implements Inputable, Updatable, Renderable {
+public class Player extends Object implements Inputable, Renderable {
 
     private int mDirectionOfMove = 0;
     private float mSpeed = 1.0f;
@@ -65,11 +64,6 @@ public class Player extends Object implements Inputable, Updatable, Renderable {
         if (input.isKeyPressed(Keyboard.KEY_SPASE)) {
             stopMove();
         }
-    }
-
-    @Override
-    public void update() {
-        //
     }
 
     @Override

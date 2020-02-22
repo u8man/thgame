@@ -10,22 +10,11 @@ abstract public class Object {
     protected float mXPos;
     protected float mYPos;
     protected boolean mRemoved = false;
-    protected String mId;
 
     public Object(float xPos, float yPos, Type type) {
         mXPos = xPos;
         mYPos = yPos;
         mType = type;
-    }
-
-    // Добавляет идентификатор объекта
-    public void setId(String id) {
-        mId = id;
-    }
-
-    // Получает идентификатор объекта
-    public String getId() {
-        return mId;
     }
 
     // Устанавливает менеджера объектов

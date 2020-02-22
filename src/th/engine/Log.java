@@ -7,7 +7,7 @@ public class Log {
 
     // Выводит сообщение в консоль
     public static void console(String message) {
-        if (Core.isDebug()) {
+        if (Game.isDebug()) {
             System.out.println(message);
         }
     }
