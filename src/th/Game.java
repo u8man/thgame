@@ -18,7 +18,7 @@ public class Game extends Core {
 
 
     public Game() {
-        super(360, 640, "TH Game 0.1.0", true, true);
+        super(360, 640, "TH Game 0.1.1", true, true);
     }
 
     @Override
