@@ -7,7 +7,7 @@ import th.engine.graphics.Color;
  *
  * todo: разделить потоки окна и игрового цикла
  */
-abstract public class Core {
+abstract public class Game {
 
     protected Window mWindow;
     protected Graphics mGraphics;
@@ -19,19 +19,18 @@ abstract public class Core {
 
     protected boolean mPaused = false;
 
-
     // Конструктор (3)
-    public Core(int width, int height, String title) {
+    public Game(int width, int height, String title) {
         this(width, height, title, false, false);
     }
 
     // Конструктор (4)
-    public Core(int width, int height, String title, boolean vsync) {
+    public Game(int width, int height, String title, boolean vsync) {
         this(width, height, title, vsync, false);
     }
 
     // Конструктор (5)
-    public Core(int width, int height, String title, boolean vsync, boolean debug) {
+    public Game(int width, int height, String title, boolean vsync, boolean debug) {
         if (debug) title = title + "  [debug: on]";
         mDebug = debug;
         mWindow = new Window(width, height, title, vsync);
