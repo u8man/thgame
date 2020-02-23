@@ -93,10 +93,12 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
     @Override
     // Обновляет состояние объектов
     public void update() {
-        for (ObjectData data : mObjects) {
+        List<ObjectData> objects = new ArrayList<>(mObjects);
+
+        for (ObjectData data : objects) {
             // Удаляем помеченные
             if (data.getObject().isRemoved()) {
-                mObjects.remove(data);
+                objects.remove(data);
                 continue;
             }
             // Обновляем состояние
@@ -104,6 +106,8 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
                 ((Updatable) data.getObject()).update();
             }
         }
+
+        objects = null;
     }
 
     @Override
