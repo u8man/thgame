@@ -30,7 +30,7 @@ public class THGame extends th.engine.Game {
         rWay.setSpeed(2);
         rWay.move();
 
-        Train train = (Train) mOm.add("Train", new Train(120, 30), 2);
+        Train train = (Train) mOm.add("Train", new Train(120, -50), 2);
         train.init();
 
         Player player1 = (Player) mOm.add("Player", new Player(167, 400), 4);
