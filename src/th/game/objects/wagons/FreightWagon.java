@@ -3,7 +3,6 @@ package th.game.objects.wagons;
 import th.engine.Graphics;
 import th.engine.graphics.Color;
 import th.engine.graphics.shapes.Rectangle;
-import th.game.objects.Train;
 
 /**
  * Грузовой вагон
@@ -26,24 +25,9 @@ public class FreightWagon extends Wagon {
     }
 
     @Override
-    public void update() {
-        Train train = (Train) mObjectManager.getObject("Train");
-
-        if (train.getDirectionOfMove() != 0) {
-            if (train.getDirectionOfMove() > 0) {
-                // Вниз
-                setYPos(getYPos() + train.getSpeed());
-            } else {
-                // Вверх
-                setYPos(getYPos() - train.getSpeed());
-            }
-        }
-    }
-
-    @Override
     public void render(Graphics g) {
         // Рисуем вагон, только если он находится на экране
-        if (getYPos() > -(Wagon.LENGHT) && getYPos() < mObjectManager.getGame().getHeight()) {
+        if (isVisible()) {
             g.setColor(new Color(51, 51, 51));
             // Прицеп
             g.draw(new Rectangle(8, 20), getXPos() + 61, getYPos());
