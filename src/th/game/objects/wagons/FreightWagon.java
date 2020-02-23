@@ -43,15 +43,15 @@ public class FreightWagon extends Wagon {
     @Override
     public void render(Graphics g) {
         // Рисуем вагон, только если он находится на экране
-        if (getYPos() > -270 && getYPos() < mObjectManager.getGame().getHeight()) {
+        if (getYPos() > -(Wagon.LENGHT) && getYPos() < mObjectManager.getGame().getHeight()) {
             g.setColor(new Color(51, 51, 51));
             // Прицеп
-            g.draw(new Rectangle(8, 30), getXPos() + 61, getYPos());
+            g.draw(new Rectangle(8, 20), getXPos() + 61, getYPos());
             // Платформа
-            g.draw(new Rectangle(128, 250), getXPos(), getYPos() + 20);
+            g.draw(new Rectangle(128, Wagon.LENGHT - 20), getXPos(), getYPos() + 20);
             // Груз
             g.setColor(mColor);
-            g.draw(new Rectangle(118, 240), getXPos() + 5, getYPos() + 25);
+            g.draw(new Rectangle(118, Wagon.LENGHT - 30), getXPos() + 5, getYPos() + 25);
         }
     }
 }

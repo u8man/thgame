@@ -4,6 +4,8 @@ import th.engine.game.Object;
 import th.engine.game.interfaces.Updatable;
 import th.game.ObjectType;
 import th.game.objects.wagons.FreightWagon;
+import th.game.objects.wagons.Wagon;
+
 import java.util.Random;
 
 /**
@@ -22,7 +24,7 @@ public class Train extends Object implements Updatable {
     // Инициализирует поезд несколькими вагонами
     public void init() {
         for (int i = 0; i < 3; i++) {
-            createWagon(mXPos, mYPos - (i * 270));
+            createWagon(mXPos, mYPos - (i * Wagon.LENGHT));
         }
     }
 
