@@ -13,24 +13,24 @@ import java.util.Random;
  */
 public class Train extends Object implements Updatable {
 
-    private Random mRandom = new Random(System.currentTimeMillis());
+    private float mStartYPos;
     private int mWagonId = 0;
 
     // Конструктор поезда
     public Train(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Train);
+        mStartYPos = mYPos;
     }
 
     // Инициализирует поезд несколькими вагонами
     public void init() {
-        for (int i = 0; i < 3; i++) {
-            createWagon(mXPos, mYPos - (i * Wagon.LENGHT));
-        }
+        createWagon(mXPos, mYPos);
     }
 
     // Создает вагон
     private void createWagon(float x, float y) {
-        int type = mRandom.nextInt(6) + 1;
+        Random random = new Random(System.currentTimeMillis());
+        int type = random.nextInt(6) + 1;
         int priority = mObjectManager.getObjectData("Train").getPriority();
         mObjectManager.add("Wagon_" + (mWagonId++), new FreightWagon(x, y, type), priority);
     }
@@ -48,7 +48,13 @@ public class Train extends Object implements Updatable {
     @Override
     // Обновляет логику поезда
     public void update() {
-        //
+        if (getDirectionOfMove() != 0) {
+            mYPos = getDirectionOfMove() > 0 ? mYPos + getSpeed() : mYPos - getSpeed();
+
+            if (mYPos > mStartYPos) {
+                createWagon(mXPos, mYPos -= Wagon.LENGHT);
+            }
+        }
     }
  }
 
