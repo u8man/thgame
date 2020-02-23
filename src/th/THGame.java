@@ -18,7 +18,7 @@ public class THGame extends th.engine.Game {
 
 
     public THGame() {
-        super(360, 640, "TH Game 0.1.2", true, true);
+        super(360, 640, "TH Game 0.1.3", true, true);
     }
 
     @Override
