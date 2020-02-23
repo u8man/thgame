@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class Train extends Object implements Updatable {
 
-    Random mRandom = new Random(System.currentTimeMillis());
+    private Random mRandom = new Random(System.currentTimeMillis());
     private int mWagonId;
 
     // Конструктор поезда
