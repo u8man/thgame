@@ -12,7 +12,7 @@ import java.util.Random;
 public class Train extends Object implements Updatable {
 
     private Random mRandom = new Random(System.currentTimeMillis());
-    private int mWagonId;
+    private int mWagonId = 0;
 
     // Конструктор поезда
     public Train(float xPos, float yPos) {
@@ -27,26 +27,26 @@ public class Train extends Object implements Updatable {
     }
 
     // Создает вагон
-    public void createWagon(float x, float y) {
-        mWagonId++;
+    private void createWagon(float x, float y) {
         int type = mRandom.nextInt(6) + 1;
-        mObjectManager.add("Wagon_" + mWagonId, new FreightWagon(x, y, mWagonId, type));
+        int priority = mObjectManager.getObjectData("Train").getPriority();
+        mObjectManager.add("Wagon_" + (mWagonId++), new FreightWagon(x, y, type), priority);
+    }
+
+    // Получает направление движения поезда
+    public int getDirectionOfMove() {
+        return ((Player) mObjectManager.getObject("Player")).getDirectionOfMove();
+    }
+
+    // Получает скорость движения поезда
+    public float getSpeed() {
+        return ((Player) mObjectManager.getObject("Player")).getSpeed();
     }
 
     @Override
     // Обновляет логику поезда
     public void update() {
-        Player player = (Player) mObjectManager.get("Player");
-
-        if (player.getDirectionOfMove() != 0) {
-            if (player.getDirectionOfMove() > 0) {
-                // Вниз
-                setYPos(getYPos() + player.getSpeed());
-            } else {
-                // Вверх
-                setYPos(getYPos() - player.getSpeed());
-            }
-        }
+        //
     }
  }
 

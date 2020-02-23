@@ -11,12 +11,9 @@ import th.game.objects.Train;
 public class FreightWagon extends Wagon {
 
     private Color mColor;
-    private int mId;
 
-    public FreightWagon(float xPos, float yPos, int id, int color) {
+    public FreightWagon(float xPos, float yPos, int color) {
         super(xPos, yPos);
-
-        mId = id;
 
         switch (color) {
             case 1: mColor = new Color(208, 119, 49); break; // оранжевый
@@ -30,8 +27,17 @@ public class FreightWagon extends Wagon {
 
     @Override
     public void update() {
-        Train train = (Train) mObjectManager.get("Train");
-        setYPos(train.getYPos() + (mId * 270));
+        Train train = (Train) mObjectManager.getObject("Train");
+
+        if (train.getDirectionOfMove() != 0) {
+            if (train.getDirectionOfMove() > 0) {
+                // Вниз
+                setYPos(getYPos() + train.getSpeed());
+            } else {
+                // Вверх
+                setYPos(getYPos() - train.getSpeed());
+            }
+        }
     }
 
     @Override

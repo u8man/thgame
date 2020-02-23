@@ -6,6 +6,7 @@ import th.engine.Input;
 import th.engine.game.interfaces.Inputable;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Updatable;
+import th.game.ObjectType;
 
 import java.util.*;
 
@@ -41,12 +42,23 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
     }
 
     // Получает объект
-    public Object get(String name) {
-        return getData(name).getObject();
+    public Object getObject(String name) {
+        return getObjectData(name).getObject();
+    }
+
+    // Получает массив объектов определенного типа
+    public List<Object> getObjects(ObjectType type) {
+        List<Object> objects = new ArrayList<>();
+        for (ObjectData data : mObjects) {
+            if (data.getObject().getType() == type) {
+                objects.add(data.getObject());
+            }
+        }
+        return objects;
     }
 
     // Получает данные объекта
-    private ObjectData getData(String name) {
+    public ObjectData getObjectData(String name) {
         for (ObjectData data: mObjects) {
             if (data.getName().equals(name)) {
                 return data;
@@ -57,7 +69,7 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
 
     // Удаляет объект
     public void remove(String name) {
-        ObjectData object = getData(name);
+        ObjectData object = getObjectData(name);
         if (object != null) {
             mObjects.remove(object);
         }
