@@ -35,6 +35,7 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
 
     // Добавляет объект с указанием приоритета
     public Object add(String name, Object object, int priority) {
+        object.setName(name);
         object.setObjectManager(this);
         mObjects.add(new ObjectData(name, object, priority));
         mObjects.sort(Comparator.comparing(ObjectData::getPriority));
@@ -69,9 +70,10 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
 
     // Удаляет объект
     public void remove(String name) {
-        ObjectData object = getObjectData(name);
-        if (object != null) {
-            mObjects.remove(object);
+        ObjectData data = getObjectData(name);
+        if (data != null) {
+            // Помечаем объект данных на удаление
+            data.remove();
         }
     }
 
@@ -93,20 +95,22 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
     @Override
     // Обновляет состояние объектов
     public void update() {
+        // Клонируем массив объектов
         List<ObjectData> objects = new ArrayList<>(mObjects);
 
         for (ObjectData data : objects) {
-            // Удаляем помеченные
-            if (data.getObject().isRemoved()) {
-                objects.remove(data);
+            if (data.isRemoved()) {
+                // Удаляем значение из оригинального массива
+                mObjects.remove(data);
                 continue;
             }
-            // Обновляем состояние
+            // Обновляем состояние игровых объектов
             if (data.getObject() instanceof Updatable) {
                 ((Updatable) data.getObject()).update();
             }
         }
 
+        // Удаляем клонированый массив
         objects = null;
     }
 

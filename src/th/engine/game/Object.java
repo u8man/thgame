@@ -6,10 +6,10 @@ package th.engine.game;
 abstract public class Object {
 
     protected Type mType;
+    protected String mName = "";
     protected ObjectManager mObjectManager;
     protected float mXPos;
     protected float mYPos;
-    protected boolean mRemoved = false;
 
     public Object(float xPos, float yPos, Type type) {
         mXPos = xPos;
@@ -25,6 +25,16 @@ abstract public class Object {
     // Получает экземпляр менеджера объектов
     public ObjectManager getObjectManager() {
         return mObjectManager;
+    }
+
+    // Устанавливает имя объекта
+    public void setName(String name) {
+        mName = name;
+    }
+
+    // Получает имя объекта
+    public String getName() {
+        return mName;
     }
 
     // Получает тип игрового объекта
@@ -50,16 +60,6 @@ abstract public class Object {
     // Устанавливает положение объекта по Y оси
     public void setYPos(float YPos) {
         mYPos = YPos;
-    }
-
-    // Проверяет, помечен ли объект на удаление
-    public boolean isRemoved() {
-        return mRemoved;
-    }
-
-    // Помечает объект на удаление
-    public void remove() {
-        mRemoved = true;
     }
 }
 
