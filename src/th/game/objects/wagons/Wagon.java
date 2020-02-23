@@ -27,14 +27,14 @@ public abstract class Wagon extends Object implements Renderable, Updatable {
 
     @Override
     public void update() {
-        Train train = (Train) mObjectManager.getObject("Train");
+        Train train = (Train) getObjectManager().getObject("Train");
 
         if (train.getDirectionOfMove() != 0) {
-            mYPos = train.getDirectionOfMove() > 0 ? mYPos + train.getSpeed() : mYPos - train.getSpeed();
+            setYPos(train.getDirectionOfMove() > 0 ? getYPos() + train.getSpeed() : getYPos() - train.getSpeed());
         }
 
         // Делаем вагон видимым, если он находится в пределах окна
-        mVisible = mYPos > -(Wagon.LENGHT) && mYPos < mObjectManager.getGame().getHeight();
+        mVisible = getYPos() > -(Wagon.LENGHT) && getYPos() < getObjectManager().getGame().getHeight();
     }
 }
 

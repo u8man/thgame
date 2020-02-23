@@ -14,7 +14,6 @@ import static org.lwjgl.glfw.Callbacks.*;
 public class Window {
 
     private long mWindow;
-
     private String mTitle;
     private int mHeight;
     private int mWidth;

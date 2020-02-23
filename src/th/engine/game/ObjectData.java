@@ -8,7 +8,7 @@ public class ObjectData {
     private String mName;
     private Object mObject;
     private int mPriority;
-    protected boolean mRemoved = false;
+    private boolean mRemoved = false;
 
     public ObjectData(String name, Object object, int priority) {
         mName = name;

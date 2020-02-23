@@ -14,7 +14,7 @@ import th.game.ObjectType;
 public class Railway extends Object implements Renderable, Updatable {
 
     private int mSleeperSize = 16;
-    private float mStartDrawSleepers = -(mSleeperSize) ;
+    private int mStartDrawSleepers = -(mSleeperSize) ;
     private int mEndDrawSleepers = 640 + (mSleeperSize);
     private float mSpeed = 1.4f;
     private boolean mMove = false;
@@ -66,7 +66,6 @@ public class Railway extends Object implements Renderable, Updatable {
         for (float i = mStartDrawSleepers; i < mEndDrawSleepers; i += 32.0f) {
             g.draw(new Rectangle(116, mSleeperSize), getXPos() - 54, getYPos() + i);
         }
-
         // Рельсы
         g.setColor(new Color(80, 80, 80));
         g.draw(new Rectangle(8, 640), getXPos() - 44, getYPos());

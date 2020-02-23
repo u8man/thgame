@@ -9,15 +9,13 @@ import th.engine.graphics.Color;
  */
 abstract public class Game {
 
-    protected Window mWindow;
-    protected Graphics mGraphics;
+    private static boolean mDebug = false;
 
-    protected static boolean mDebug = false;
-
-    protected int mUps = 0;
-    protected int mFps = 0;
-
-    protected boolean mPaused = false;
+    private Window mWindow;
+    private Graphics mGraphics;
+    private int mUps = 0;
+    private int mFps = 0;
+    private boolean mPaused = false;
 
     // Конструктор (3)
     public Game(int width, int height, String title) {

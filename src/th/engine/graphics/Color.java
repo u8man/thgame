@@ -5,8 +5,10 @@ package th.engine.graphics;
  */
 public class Color {
 
-    protected float mR, mG, mB, mA;
-
+    private float mR;
+    private float mG;
+    private float mB;
+    private float mA;
 
     // Конструктор
     public Color(Color color) {

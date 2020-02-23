@@ -17,10 +17,10 @@ public class Rectangle extends Shape {
     @Override
     public void draw() {
         glBegin(GL_QUADS);
-        glVertex2f(mXPos, mYPos);
-        glVertex2f(mXPos + mWidth, mYPos);
-        glVertex2f(mXPos + mWidth, mYPos + mHeight);
-        glVertex2f(mXPos, mYPos + mHeight);
+        glVertex2f(getXPos(), getYPos());
+        glVertex2f(getXPos() + mWidth, getYPos());
+        glVertex2f(getXPos() + mWidth, getYPos() + mHeight);
+        glVertex2f(getXPos(), getYPos() + mHeight);
         glEnd();
     }
 }

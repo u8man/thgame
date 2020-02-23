@@ -17,9 +17,9 @@ public class Triangle extends Shape {
     @Override
     public void draw() {
         glBegin(GL_TRIANGLES);
-        glVertex2f(mXPos + (mWidth / 2), mYPos);
-        glVertex2f(mXPos, mYPos + mHeight);
-        glVertex2f(mXPos + mWidth, mYPos + mHeight);
+        glVertex2f(getXPos() + (mWidth / 2), getYPos());
+        glVertex2f(getXPos(), getYPos() + mHeight);
+        glVertex2f(getXPos() + mWidth, getYPos() + mHeight);
         glEnd();
     }
 }

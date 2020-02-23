@@ -13,7 +13,8 @@ import static org.lwjgl.opengl.GL11.*;
  */
 public class Graphics {
 
-    private int mWidth, mHeight;
+    private int mWidth;
+    private int mHeight;
 
     // Конструктор
     public Graphics(int width, int height) {

@@ -19,40 +19,41 @@ public class Train extends Object implements Updatable {
     // Конструктор поезда
     public Train(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Train);
-        mStartYPos = mYPos;
+        mStartYPos = yPos;
     }
 
     // Инициализирует поезд несколькими вагонами
     public void init() {
-        createWagon(mXPos, mYPos);
+        createWagon(getXPos(), getYPos());
     }
 
     // Создает вагон
     private void createWagon(float x, float y) {
         Random random = new Random(System.currentTimeMillis());
         int type = random.nextInt(6) + 1;
-        int priority = mObjectManager.getObjectData("Train").getPriority();
-        mObjectManager.add("Wagon_" + (mWagonId++), new FreightWagon(x, y, type), priority);
+        int priority = getObjectManager().getObjectData("Train").getPriority();
+        getObjectManager().add("Wagon_" + (mWagonId++), new FreightWagon(x, y, type), priority);
     }
 
     // Получает направление движения поезда
     public int getDirectionOfMove() {
-        return ((Player) mObjectManager.getObject("Player")).getDirectionOfMove();
+        return ((Player) getObjectManager().getObject("Player")).getDirectionOfMove();
     }
 
     // Получает скорость движения поезда
     public float getSpeed() {
-        return ((Player) mObjectManager.getObject("Player")).getSpeed();
+        return ((Player) getObjectManager().getObject("Player")).getSpeed();
     }
 
     @Override
     // Обновляет логику поезда
     public void update() {
         if (getDirectionOfMove() != 0) {
-            mYPos = getDirectionOfMove() > 0 ? mYPos + getSpeed() : mYPos - getSpeed();
+            setYPos(getDirectionOfMove() > 0 ? getYPos() + getSpeed() : getYPos() - getSpeed());
 
-            if (mYPos > mStartYPos) {
-                createWagon(mXPos, mYPos -= Wagon.LENGHT);
+            if (getYPos() > mStartYPos) {
+                setYPos(getYPos() - Wagon.LENGHT);
+                createWagon(getXPos(), getYPos());
             }
         }
     }
