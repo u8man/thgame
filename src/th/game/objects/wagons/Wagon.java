@@ -25,6 +25,11 @@ public abstract class Wagon extends Object implements Renderable, Updatable {
         return mVisible;
     }
 
+    // Устанавливает видимость вагона
+    public void setVisible(boolean visible) {
+        mVisible = visible;
+    }
+
     @Override
     public void update() {
         Train train = (Train) getObjectManager().getObject("Train");
@@ -33,7 +38,8 @@ public abstract class Wagon extends Object implements Renderable, Updatable {
             setYPos(train.getDirectionOfMove() > 0 ? getYPos() + train.getSpeed() : getYPos() - train.getSpeed());
         }
 
-        // Делаем вагон видимым, если он находится в пределах окна
+        // Устанавливает видимость вагона,
+        // в зависимости от его положения относительно видимой части окна
         mVisible = getYPos() > -(Wagon.LENGHT) && getYPos() < getObjectManager().getGame().getHeight();
     }
 }
