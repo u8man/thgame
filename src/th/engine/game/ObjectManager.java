@@ -1,12 +1,10 @@
 package th.engine.game;
 
-import th.engine.Game;
 import th.engine.Graphics;
 import th.engine.Input;
 import th.engine.game.interfaces.Inputable;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Updatable;
-import th.game.ObjectType;
 
 import java.util.*;
 
@@ -15,18 +13,7 @@ import java.util.*;
  */
 public class ObjectManager implements Inputable, Updatable, Renderable {
 
-    private Game mGame;
     private ArrayList<ObjectData> mObjects = new ArrayList<>();
-
-    // Конструктор
-    public ObjectManager(Game game) {
-        mGame = game;
-    }
-
-    // Получает экземпляр текущей игры
-    public Game getGame() {
-        return mGame;
-    }
 
     // Добавляет объект, с приоритетом по умолчанию
     public Object add(String name, Object object) {
@@ -52,7 +39,7 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
     }
 
     // Получает массив объектов указанного типа
-    public List<Object> getObjects(ObjectType type) {
+    public List<Object> getObjects(Type type) {
         ArrayList<Object> objects = new ArrayList<>();
 
         for (ObjectData data : mObjects) {

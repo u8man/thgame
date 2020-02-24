@@ -24,7 +24,7 @@ public class THGame extends th.engine.Game {
     @Override
     public void init() {
         setBackgroundColor(new Color(80, 140, 100));
-        mOm = new ObjectManager(this);
+        mOm = new ObjectManager();
 
         Railway rWay = (Railway) mOm.add("Railway", new Railway(180, 0));
         rWay.setSpeed(2);
