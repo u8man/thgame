@@ -1,5 +1,6 @@
 package th.game.objects.wagons;
 
+import th.engine.Window;
 import th.engine.game.Object;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Updatable;
@@ -40,7 +41,7 @@ public abstract class Wagon extends Object implements Renderable, Updatable {
 
         // Устанавливает видимость вагона,
         // в зависимости от его положения относительно видимой части окна
-        mVisible = getYPos() > -(Wagon.LENGHT) && getYPos() < getObjectManager().getGame().getHeight();
+        mVisible = getYPos() > -(Wagon.LENGHT) && getYPos() < Window.getHeight();
     }
 }
 
