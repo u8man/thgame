@@ -41,7 +41,7 @@ public class Graphics {
     // Рисует фигуру
     public void draw(Shape shape, float xPos, float yPos) {
         shape.setPosition(xPos, yPos);
-        shape.draw();
+        shape.draw(this);
     }
 }
 

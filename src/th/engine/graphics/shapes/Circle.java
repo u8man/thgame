@@ -1,5 +1,6 @@
 package th.engine.graphics.shapes;
 
+import th.engine.Graphics;
 import th.engine.graphics.Shape;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -23,7 +24,7 @@ public class Circle extends Shape {
 
     @Override
     // Рисует фигуру (круг)
-    public void draw() {
+    public void draw(Graphics g) {
         glBegin(GL_TRIANGLE_FAN);
         for (float a = 0.0f; a < 360.0; a += mStep) {
             float theta = 1.0f * (float) Math.PI * a / 180.0f;

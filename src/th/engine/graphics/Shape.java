@@ -1,5 +1,7 @@
 package th.engine.graphics;
 
+import th.engine.Graphics;
+
 /**
  * Базовый класс фигуры
  */
@@ -9,7 +11,7 @@ public abstract class Shape {
     protected float mYPos = 0.0f;
 
     // Рисует фигуру
-    abstract public void draw();
+    abstract public void draw(Graphics g);
 
     // Устанавливае положение фигуры
     public void setPosition(float x, float y) {
