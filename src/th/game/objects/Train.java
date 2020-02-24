@@ -24,16 +24,18 @@ public class Train extends Object implements Updatable {
 
     // Инициализирует поезд несколькими вагонами
     public void init() {
-        createWagon(getXPos(), getYPos());
+        Wagon wagon = createWagon(getXPos(), getYPos());
+        wagon.setVisible(true);
     }
 
     // Создает вагон
-    private void createWagon(float x, float y) {
+    private Wagon createWagon(float x, float y) {
         Random random = new Random(System.currentTimeMillis());
         String name = "Wagon_" + (mWagonId++);
         int type = random.nextInt(6) + 1;
         int priority = getObjectManager().getObjectData("Train").getPriority();
-        getObjectManager().add(name, new FreightWagon(x, y, type), priority);
+
+        return (Wagon) getObjectManager().add(name, new FreightWagon(x, y, type), priority);
     }
 
     // Получает направление движения поезда
