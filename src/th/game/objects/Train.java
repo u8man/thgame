@@ -30,9 +30,10 @@ public class Train extends Object implements Updatable {
     // Создает вагон
     private void createWagon(float x, float y) {
         Random random = new Random(System.currentTimeMillis());
+        String name = "Wagon_" + (mWagonId++);
         int type = random.nextInt(6) + 1;
         int priority = getObjectManager().getObjectData("Train").getPriority();
-        getObjectManager().add("Wagon_" + (mWagonId++), new FreightWagon(x, y, type), priority);
+        getObjectManager().add(name, new FreightWagon(x, y, type), priority);
     }
 
     // Получает направление движения поезда
