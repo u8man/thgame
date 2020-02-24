@@ -13,10 +13,11 @@ import java.util.Random;
  */
 public class Train extends Object implements Updatable {
 
+    protected Player mPlayer;
     protected float mStartYPos;
     protected int mWagonId = 0;
 
-    // Конструктор поезда
+    // Конструктор
     public Train(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Train);
         mStartYPos = yPos;
@@ -33,27 +34,38 @@ public class Train extends Object implements Updatable {
         String name = "Wagon_" + (mWagonId++);
         int type = random.nextInt(6) + 1;
         int priority = mObjectManager.getObjectData("Train").getPriority();
-
         return (Wagon) mObjectManager.add(name, new FreightWagon(x, y, type), priority);
     }
 
     // Получает направление движения поезда
     public int getDirectionOfMove() {
-        return ((Player) mObjectManager.getObject("Player")).getDirectionOfMove();
+        Player player = getPlayer();
+        return player != null ? player.getDirectionOfMove() : 0;
     }
 
     // Получает скорость движения поезда
     public float getSpeed() {
-        return ((Player) mObjectManager.getObject("Player")).getSpeed();
+        Player player = getPlayer();
+        return player != null ? player.getSpeed() : 0.0f;
+    }
+
+    // Получает указатель на экземпляр игрока
+    private Player getPlayer() {
+        if (mPlayer == null) {
+            mPlayer = ((Player) mObjectManager.getObject("Player"));
+        }
+        return mPlayer;
     }
 
     @Override
-    // Обновляет логику поезда
+    // Обновляет состояние поезда
     public void update() {
         int directionOfMove = getDirectionOfMove();
+        // Движет поезд
         if (directionOfMove != 0) {
             mYPos = directionOfMove > 0 ? mYPos + getSpeed() : mYPos - getSpeed();
 
+            // Создает вагоны
             if (mYPos > mStartYPos) {
                 createWagon(mXPos, mYPos -= Wagon.LENGHT);
             }
