@@ -5,11 +5,11 @@ package th.engine.game;
  */
 abstract public class Object {
 
-    private Type mType;
-    private String mName = "";
-    private ObjectManager mObjectManager;
-    private float mXPos;
-    private float mYPos;
+    protected Type mType;
+    protected String mName = "";
+    protected ObjectManager mObjectManager;
+    protected float mXPos;
+    protected float mYPos;
 
     public Object(float xPos, float yPos, Type type) {
         mXPos = xPos;
