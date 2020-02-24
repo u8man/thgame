@@ -6,7 +6,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class Circle extends Shape {
 
-    private float mRadius;
+    protected float mRadius;
 
     public Circle(float radius) {
         mRadius = radius;
@@ -18,8 +18,8 @@ public class Circle extends Shape {
         glBegin(GL_POLYGON);
         for (float a = 0.0f; a < 360.0; a += step) {
             float theta = 2.0f * (float) Math.PI * a / 180.0f;
-            glVertex2f(mRadius * (float) Math.cos(theta) + (getXPos() + mRadius),
-                    mRadius * (float) Math.sin(theta) + (getYPos() + mRadius));
+            glVertex2f(mRadius * (float) Math.cos(theta) + (mXPos + mRadius),
+                    mRadius * (float) Math.sin(theta) + (mYPos + mRadius));
         }
         glEnd();
     }
