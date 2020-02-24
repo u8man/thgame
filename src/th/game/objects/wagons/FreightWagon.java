@@ -9,7 +9,7 @@ import th.engine.graphics.shapes.Rectangle;
  */
 public class FreightWagon extends Wagon {
 
-    private Color mColor;
+    protected Color mColor;
 
     public FreightWagon(float xPos, float yPos, int color) {
         super(xPos, yPos);
@@ -27,15 +27,15 @@ public class FreightWagon extends Wagon {
     @Override
     public void render(Graphics g) {
         // Рисуем вагон, только если он находится на экране
-        if (isVisible()) {
+        if (mVisible) {
             g.setColor(new Color(51, 51, 51));
             // Прицеп
-            g.draw(new Rectangle(8, 20), getXPos() + 61, getYPos());
+            g.draw(new Rectangle(8, 20), mXPos + 61, mYPos);
             // Платформа
-            g.draw(new Rectangle(128, Wagon.LENGHT - 20), getXPos(), getYPos() + 20);
+            g.draw(new Rectangle(128, Wagon.LENGHT - 20), mXPos, mYPos + 20);
             // Груз
             g.setColor(mColor);
-            g.draw(new Rectangle(118, Wagon.LENGHT - 30), getXPos() + 5, getYPos() + 25);
+            g.draw(new Rectangle(118, Wagon.LENGHT - 30), mXPos + 5, mYPos + 25);
         }
     }
 }
