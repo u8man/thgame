@@ -14,11 +14,11 @@ import th.game.ObjectType;
  */
 public class Railway extends Object implements Renderable, Updatable {
 
-    private int mSleeperSize = 16;
-    private int mStartDrawSleepers = -(mSleeperSize) ;
-    private int mEndDrawSleepers = 640 + (mSleeperSize);
-    private float mSpeed = 1.4f;
-    private boolean mMove = false;
+    protected int mSleeperSize = 16;
+    protected int mStartDrawSleepers = -(mSleeperSize) ;
+    protected int mEndDrawSleepers = 640 + (mSleeperSize);
+    protected float mSpeed = 1.4f;
+    protected boolean mMove = false;
 
     public Railway(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Railway);
@@ -51,7 +51,7 @@ public class Railway extends Object implements Renderable, Updatable {
 
     @Override
     public void update() {
-        if (isMove()) {
+        if (mMove) {
             mStartDrawSleepers += mSpeed;
 
             if (mStartDrawSleepers >= mSleeperSize) {
