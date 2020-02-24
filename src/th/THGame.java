@@ -10,12 +10,11 @@ import th.game.objects.Train;
 
 public class THGame extends th.engine.Game {
 
-    private ObjectManager mOm;
+    protected ObjectManager mOm;
 
     public static void main(String[] args) {
         new THGame().run();
     }
-
 
     public THGame() {
         super(360, 640, "TH Game 0.1.3", true, true);
