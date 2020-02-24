@@ -13,8 +13,8 @@ import java.util.Random;
  */
 public class Train extends Object implements Updatable {
 
-    private float mStartYPos;
-    private int mWagonId = 0;
+    protected float mStartYPos;
+    protected int mWagonId = 0;
 
     // Конструктор поезда
     public Train(float xPos, float yPos) {
@@ -24,8 +24,7 @@ public class Train extends Object implements Updatable {
 
     // Инициализирует поезд несколькими вагонами
     public void init() {
-        Wagon wagon = createWagon(getXPos(), getYPos());
-        wagon.setVisible(true);
+        createWagon(mXPos, mYPos).setVisible(true);
     }
 
     // Создает вагон
@@ -33,30 +32,29 @@ public class Train extends Object implements Updatable {
         Random random = new Random(System.currentTimeMillis());
         String name = "Wagon_" + (mWagonId++);
         int type = random.nextInt(6) + 1;
-        int priority = getObjectManager().getObjectData("Train").getPriority();
+        int priority = mObjectManager.getObjectData("Train").getPriority();
 
-        return (Wagon) getObjectManager().add(name, new FreightWagon(x, y, type), priority);
+        return (Wagon) mObjectManager.add(name, new FreightWagon(x, y, type), priority);
     }
 
     // Получает направление движения поезда
     public int getDirectionOfMove() {
-        return ((Player) getObjectManager().getObject("Player")).getDirectionOfMove();
+        return ((Player) mObjectManager.getObject("Player")).getDirectionOfMove();
     }
 
     // Получает скорость движения поезда
     public float getSpeed() {
-        return ((Player) getObjectManager().getObject("Player")).getSpeed();
+        return ((Player) mObjectManager.getObject("Player")).getSpeed();
     }
 
     @Override
     // Обновляет логику поезда
     public void update() {
         if (getDirectionOfMove() != 0) {
-            setYPos(getDirectionOfMove() > 0 ? getYPos() + getSpeed() : getYPos() - getSpeed());
+            mYPos = getDirectionOfMove() > 0 ? mYPos + getSpeed() : mYPos - getSpeed();
 
-            if (getYPos() > mStartYPos) {
-                setYPos(getYPos() - Wagon.LENGHT);
-                createWagon(getXPos(), getYPos());
+            if (mYPos > mStartYPos) {
+                createWagon(mXPos, mYPos -= Wagon.LENGHT);
             }
         }
     }
