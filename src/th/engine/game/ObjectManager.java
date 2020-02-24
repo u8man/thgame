@@ -110,9 +110,9 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
     // Обновляет состояние объектов
     public void update() {
         // Клонируем оригинальный массив
-        ArrayList<ObjectData> objects = new ArrayList<>(mObjects);
+        ArrayList<ObjectData> tempObjects = new ArrayList<>(mObjects);
 
-        for (ObjectData data : objects) {
+        for (ObjectData data : tempObjects) {
             if (data.isRemoved()) {
                 // Удаляем объект данных из оригинального массива
                 mObjects.remove(data);
@@ -131,7 +131,7 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
         }
 
         // Очищаем временный массив
-        objects.clear();
+        tempObjects.clear();
     }
 
     @Override
