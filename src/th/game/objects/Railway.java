@@ -65,15 +65,15 @@ public class Railway extends Object implements Renderable, Updatable {
         // Шпалы
         g.setColor(new Color(128, 89, 80));
         for (float i = mStartDrawSleepers; i < mEndDrawSleepers; i += 32.0f) {
-            g.draw(new Rectangle(116, mSleeperSize), getXPos() - 54, getYPos() + i);
+            g.draw(new Rectangle(116, mSleeperSize), mXPos, mYPos + i);
         }
         // Рельсы
         g.setColor(new Color(80, 80, 80));
 
         int yPos = Window.getHeight();
 
-        g.draw(new Rectangle(8, yPos), getXPos() - 44, getYPos());
-        g.draw(new Rectangle(8, yPos), getXPos() + 44, getYPos());
+        g.draw(new Rectangle(8, yPos), mXPos + 10, mYPos);
+        g.draw(new Rectangle(8, yPos), mXPos + 98, mYPos);
     }
 }
 
