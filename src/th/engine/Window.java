@@ -15,8 +15,8 @@ public class Window {
 
     private long mWindow;
     private String mTitle;
-    private int mHeight;
-    private int mWidth;
+    protected static int mWidth;
+    protected static int mHeight;
 
     private boolean mVsync = false;
 
@@ -104,12 +104,12 @@ public class Window {
     }
 
     // Получает ширину окна
-    public int getWidth() {
+    public static int getWidth() {
         return mWidth;
     }
 
     // Получает высоту окна
-    public int getHeight() {
+    public static int getHeight() {
         return mHeight;
     }
 
