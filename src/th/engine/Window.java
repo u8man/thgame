@@ -13,8 +13,8 @@ import static org.lwjgl.glfw.Callbacks.*;
  */
 public class Window {
 
-    private long mWindow;
-    private String mTitle;
+    protected long mWindow;
+    protected String mTitle;
     protected static int mWidth;
     protected static int mHeight;
 
@@ -60,7 +60,7 @@ public class Window {
 
         mWindow = glfwCreateWindow(mWidth, mHeight, mTitle, 0, 0);
 
-        if (mWindow == 0) {
+        if (mWindow == GLFW_FALSE) {
             glfwTerminate();
             throw new RuntimeException("Не удалось создать GLFW окно");
         }
