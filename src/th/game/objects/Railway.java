@@ -1,27 +1,24 @@
 package th.game.objects;
 
 import th.engine.Graphics;
-import th.engine.Window;
 import th.engine.game.Object;
 import th.engine.game.interfaces.Updatable;
 import th.engine.game.interfaces.Renderable;
-import th.engine.graphics.Color;
-import th.engine.graphics.shapes.Rectangle;
 import th.game.ObjectType;
+import th.game.shapes.SRailway;
 
 /**
  * Железная дорога
  */
 public class Railway extends Object implements Renderable, Updatable {
 
-    protected int mSleeperSize = 16;
-    protected int mStartDrawSleepers = -(mSleeperSize) ;
-    protected int mEndDrawSleepers = 640 + (mSleeperSize);
+    protected SRailway mRailwayShape;
     protected float mSpeed = 1.4f;
     protected boolean mMove = false;
 
     public Railway(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Railway);
+        mRailwayShape = new SRailway(this, xPos, yPos);
     }
 
     // Устанавливает скорость движения
@@ -51,29 +48,12 @@ public class Railway extends Object implements Renderable, Updatable {
 
     @Override
     public void update() {
-        if (mMove) {
-            mStartDrawSleepers += mSpeed;
-
-            if (mStartDrawSleepers >= mSleeperSize) {
-                mStartDrawSleepers = -(mSleeperSize);
-            }
-        }
+        mRailwayShape.update();
     }
 
     @Override
     public void render(Graphics g) {
-        // Шпалы
-        g.setColor(new Color(128, 89, 80));
-        for (float i = mStartDrawSleepers; i < mEndDrawSleepers; i += 32.0f) {
-            g.draw(new Rectangle(116, mSleeperSize), mXPos, mYPos + i);
-        }
-        // Рельсы
-        g.setColor(new Color(80, 80, 80));
-
-        int yPos = Window.getHeight();
-
-        g.draw(new Rectangle(8, yPos), mXPos + 10, mYPos);
-        g.draw(new Rectangle(8, yPos), mXPos + 98, mYPos);
+        mRailwayShape.draw(g);
     }
 }
 
