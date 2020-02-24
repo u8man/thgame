@@ -15,7 +15,7 @@ public abstract class Wagon extends Object implements Renderable, Updatable {
     // Длинна вагона
     public static final int LENGHT = 260;
 
-    private boolean mVisible = false;
+    protected boolean mVisible = false;
 
     public Wagon(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Wagon);
@@ -33,15 +33,14 @@ public abstract class Wagon extends Object implements Renderable, Updatable {
 
     @Override
     public void update() {
-        Train train = (Train) getObjectManager().getObject("Train");
+        Train train = (Train) mObjectManager.getObject("Train");
 
         if (train.getDirectionOfMove() != 0) {
-            setYPos(train.getDirectionOfMove() > 0 ? getYPos() + train.getSpeed() : getYPos() - train.getSpeed());
+            mYPos = train.getDirectionOfMove() > 0 ? mYPos + train.getSpeed() : mYPos - train.getSpeed();
         }
 
-        // Устанавливает видимость вагона,
-        // в зависимости от его положения относительно видимой части окна
-        mVisible = getYPos() > -(Wagon.LENGHT) && getYPos() < Window.getHeight();
+        // Если вагон или какая-то его часть находится внутри окна, то он становится видимым
+        mVisible = mYPos > -(Wagon.LENGHT) && mYPos < Window.getHeight();
     }
 }
 
