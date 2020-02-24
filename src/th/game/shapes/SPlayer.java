@@ -11,15 +11,13 @@ import th.engine.graphics.shapes.Rectangle;
  */
 public class SPlayer extends ObjectShape {
 
-    protected Color mBodyColor;
     protected Circle mHead;
     protected Rectangle mShoulders;
+    protected Color mBodyColor = new Color(250, 250, 250);
 
     // Конструктор (3)
     public SPlayer(float xPos, float yPos) {
         super(xPos, yPos);
-
-        mBodyColor = new Color(250, 250, 250);
         mHead = new Circle(10);
         mShoulders = new Rectangle(36, 10);
     }
