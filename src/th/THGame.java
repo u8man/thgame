@@ -8,7 +8,7 @@ import th.game.objects.Player;
 import th.game.objects.Railway;
 import th.game.objects.Train;
 
-public class THGame extends th.engine.Game {
+public class THGame extends Game {
 
     protected ObjectManager mOm;
 
