@@ -35,11 +35,12 @@ public abstract class Wagon extends Object implements Renderable, Updatable {
     public void update() {
         Train train = (Train) mObjectManager.getObject("Train");
 
-        if (train.getDirectionOfMove() != 0) {
-            mYPos = train.getDirectionOfMove() > 0 ? mYPos + train.getSpeed() : mYPos - train.getSpeed();
+        int directionOfMove = train.getDirectionOfMove();
+        if (directionOfMove != 0) {
+            mYPos = directionOfMove > 0 ? mYPos + train.getSpeed() : mYPos - train.getSpeed();
         }
 
-        // Если вагон или какая-то его часть находится внутри окна, то он становится видимым
+        // Если вагон или какая-то его часть находится внутри окна, то он является видимым
         mVisible = mYPos > -(Wagon.LENGHT) && mYPos < Window.getHeight();
     }
 }
