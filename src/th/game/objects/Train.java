@@ -6,8 +6,6 @@ import th.game.ObjectType;
 import th.game.objects.wagons.FreightWagon;
 import th.game.objects.wagons.Wagon;
 
-import java.util.Random;
-
 /**
  * Класс поезда
  */
@@ -30,11 +28,9 @@ public class Train extends Object implements Updatable {
 
     // Создает вагон
     private Wagon createWagon(float x, float y) {
-        Random random = new Random(System.currentTimeMillis());
-        String name = "Wagon_" + (mWagonId++);
-        int type = random.nextInt(6) + 1;
         int priority = mObjectManager.getObjectData("Train").getPriority();
-        return (Wagon) mObjectManager.add(name, new FreightWagon(this, x, y, type), priority);
+        String name = "Wagon_" + (mWagonId++);
+        return (Wagon) mObjectManager.add(name, new FreightWagon(this, x, y), priority);
     }
 
     // Получает направление движения поезда
@@ -61,11 +57,11 @@ public class Train extends Object implements Updatable {
     // Обновляет состояние поезда
     public void update() {
         int directionOfMove = getDirectionOfMove();
-        // Движет поезд
+        // Движем поезд
         if (directionOfMove != 0) {
             mYPos = directionOfMove > 0 ? mYPos + getSpeed() : mYPos - getSpeed();
 
-            // Создает вагоны
+            // Создаем вагоны
             if (mYPos > mStartYPos) {
                 createWagon(mXPos, mYPos -= Wagon.LENGHT);
             }
