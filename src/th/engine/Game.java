@@ -120,16 +120,6 @@ abstract public class Game {
         return mDebug;
     }
 
-    // Получает ширину окна
-    public int getWidth() {
-        return mWindow.getWidth();
-    }
-
-    // Получает высоту окна
-    public int getHeight() {
-        return mWindow.getHeight();
-    }
-
     // Ставит игру на паузу
     public void pause() {
         mPaused = true;
