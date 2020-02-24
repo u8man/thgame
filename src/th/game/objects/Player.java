@@ -5,7 +5,6 @@ import th.engine.Input;
 import th.engine.game.Object;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Inputable;
-import th.engine.graphics.Color;
 import th.engine.input.Keyboard;
 import th.game.ObjectType;
 import th.game.shapes.SPlayer;
@@ -21,7 +20,7 @@ public class Player extends Object implements Inputable, Renderable {
 
     public Player(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Player);
-        mPlayerShape = new SPlayer(new Color(250, 250, 250), xPos, yPos);
+        mPlayerShape = new SPlayer(xPos, yPos);
     }
 
     // Устанавливает направление движения вверх
