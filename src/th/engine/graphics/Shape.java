@@ -5,8 +5,8 @@ package th.engine.graphics;
  */
 public abstract class Shape {
 
-    private float mXPos = 0.0f;
-    private float mYPos = 0.0f;
+    protected float mXPos = 0.0f;
+    protected float mYPos = 0.0f;
 
     // Рисует фигуру
     abstract public void draw();
