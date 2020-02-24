@@ -13,22 +13,13 @@ import static org.lwjgl.opengl.GL11.*;
  */
 public class Graphics {
 
-    private int mWidth;
-    private int mHeight;
-
-    // Конструктор
-    public Graphics(int width, int height) {
-        mWidth = width;
-        mHeight = height;
-    }
-
     // Инициализирует
     public void init() {
         GL.createCapabilities();
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
-        glOrtho(0, mWidth, mHeight, 0, 1, -1);
+        glOrtho(0, Window.getWidth(), Window.getHeight(), 0, 1, -1);
         glMatrixMode(GL_MODELVIEW);
     }
 

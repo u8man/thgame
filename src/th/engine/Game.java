@@ -32,7 +32,7 @@ abstract public class Game {
         if (debug) title = title + "  [debug: on]";
         mDebug = debug;
         mWindow = new Window(width, height, title, vsync);
-        mGraphics = new Graphics(width, height);
+        mGraphics = new Graphics();
     }
 
     // Инициализирует игровые данные
