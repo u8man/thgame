@@ -21,7 +21,7 @@ public class Player extends Object implements Inputable, Renderable {
 
     public Player(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Player);
-        mPlayerShape = new SPlayer(new Color(250, 250, 250), xPos, yPos);
+        mPlayerShape = new SPlayer(xPos, yPos);
     }
 
     // Устанавливает направление движения вверх
