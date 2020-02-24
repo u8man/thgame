@@ -3,6 +3,7 @@ package th.game.objects.wagons;
 import th.engine.Graphics;
 import th.engine.graphics.Color;
 import th.engine.graphics.shapes.Rectangle;
+import th.game.objects.Train;
 
 /**
  * Грузовой вагон
@@ -11,8 +12,8 @@ public class FreightWagon extends Wagon {
 
     protected Color mColor;
 
-    public FreightWagon(float xPos, float yPos, int color) {
-        super(xPos, yPos);
+    public FreightWagon(Train train, float xPos, float yPos, int color) {
+        super(train, xPos, yPos);
 
         switch (color) {
             case 1: mColor = new Color(208, 119, 49); break; // оранжевый

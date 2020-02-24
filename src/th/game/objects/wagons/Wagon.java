@@ -15,10 +15,12 @@ public abstract class Wagon extends Object implements Renderable, Updatable {
     // Длинна вагона
     public static final int LENGHT = 260;
 
+    protected Train mTrain;
     protected boolean mVisible = false;
 
-    public Wagon(float xPos, float yPos) {
+    public Wagon(Train train, float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Wagon);
+        mTrain = train;
     }
 
     // Проверяет, является ли вагон видимым
@@ -33,11 +35,9 @@ public abstract class Wagon extends Object implements Renderable, Updatable {
 
     @Override
     public void update() {
-        Train train = (Train) mObjectManager.getObject("Train");
-
-        int directionOfMove = train.getDirectionOfMove();
+        int directionOfMove = mTrain.getDirectionOfMove();
         if (directionOfMove != 0) {
-            mYPos = directionOfMove > 0 ? mYPos + train.getSpeed() : mYPos - train.getSpeed();
+            mYPos = directionOfMove > 0 ? mYPos + mTrain.getSpeed() : mYPos - mTrain.getSpeed();
         }
 
         // Если вагон или какая-то его часть находится внутри окна, то он является видимым
