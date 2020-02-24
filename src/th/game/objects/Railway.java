@@ -1,6 +1,7 @@
 package th.game.objects;
 
 import th.engine.Graphics;
+import th.engine.Window;
 import th.engine.game.Object;
 import th.engine.game.interfaces.Updatable;
 import th.engine.game.interfaces.Renderable;
@@ -68,8 +69,11 @@ public class Railway extends Object implements Renderable, Updatable {
         }
         // Рельсы
         g.setColor(new Color(80, 80, 80));
-        g.draw(new Rectangle(8, 640), getXPos() - 44, getYPos());
-        g.draw(new Rectangle(8, 640), getXPos() + 44, getYPos());
+
+        int yPos = Window.getHeight();
+
+        g.draw(new Rectangle(8, yPos), getXPos() - 44, getYPos());
+        g.draw(new Rectangle(8, yPos), getXPos() + 44, getYPos());
     }
 }
 
