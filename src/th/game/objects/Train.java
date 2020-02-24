@@ -50,8 +50,9 @@ public class Train extends Object implements Updatable {
     @Override
     // Обновляет логику поезда
     public void update() {
-        if (getDirectionOfMove() != 0) {
-            mYPos = getDirectionOfMove() > 0 ? mYPos + getSpeed() : mYPos - getSpeed();
+        int directionOfMove = getDirectionOfMove();
+        if (directionOfMove != 0) {
+            mYPos = directionOfMove > 0 ? mYPos + getSpeed() : mYPos - getSpeed();
 
             if (mYPos > mStartYPos) {
                 createWagon(mXPos, mYPos -= Wagon.LENGHT);
