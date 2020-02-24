@@ -3,19 +3,19 @@ package th.engine;
 import th.engine.graphics.Color;
 
 /**
- * Ядро
+ * Ядро игры
  *
  * todo: разделить потоки окна и игрового цикла
  */
 abstract public class Game {
 
-    private static boolean mDebug = false;
+    protected static boolean mDebug = false;
 
-    private Window mWindow;
-    private Graphics mGraphics;
-    private int mUps = 0;
-    private int mFps = 0;
-    private boolean mPaused = false;
+    protected Window mWindow;
+    protected Graphics mGraphics;
+    protected int mUps = 0;
+    protected int mFps = 0;
+    protected boolean mPaused = false;
 
     // Конструктор (3)
     public Game(int width, int height, String title) {
@@ -63,7 +63,7 @@ abstract public class Game {
 
             Input input = mWindow.getInput();
 
-            while (!mWindow.shouldClose()) {
+            while (! mWindow.shouldClose()) {
                 mGraphics.clear();
 
                 now = System.nanoTime();
@@ -72,7 +72,7 @@ abstract public class Game {
 
                 if (delta >= 1.0) {
                     input(input);
-                    if (!isPaused()) {
+                    if (! mPaused) {
                         update();
                     }
                     delta--;
@@ -83,7 +83,7 @@ abstract public class Game {
                 mWindow.swapBuffers();
 
                 mFps++;
-                if ((System.currentTimeMillis() - timer) > 1000 && isDebug()) {
+                if ((System.currentTimeMillis() - timer) > 1000 && mDebug) {
                     timer += 1000;
                     Log.console("ups: " + getUps() + ", fps: " + getFps());
                     mUps = mFps = 0;
