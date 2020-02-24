@@ -11,12 +11,12 @@ import th.game.ObjectType;
 import java.util.*;
 
 /**
- * Менеджер игровых объектов
+ * Менеджер объектов
  */
 public class ObjectManager implements Inputable, Updatable, Renderable {
 
     private Game mGame;
-    private List<ObjectData> mObjects = new ArrayList<>();
+    private ArrayList<ObjectData> mObjects = new ArrayList<>();
 
     // Конструктор
     public ObjectManager(Game game) {
@@ -28,7 +28,7 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
         return mGame;
     }
 
-    // Добавляет объект
+    // Добавляет объект, с приоритетом по умолчанию
     public Object add(String name, Object object) {
         return add(name, object, 1);
     }
@@ -37,24 +37,33 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
     public Object add(String name, Object object, int priority) {
         object.setName(name);
         object.setObjectManager(this);
+
         mObjects.add(new ObjectData(name, object, priority));
         mObjects.sort(Comparator.comparing(ObjectData::getPriority));
+
         return object;
     }
 
     // Получает объект
     public Object getObject(String name) {
-        return getObjectData(name).getObject();
+        ObjectData data = getObjectData(name);
+        // Возвращаем объект, если его данные найдены в хранилище
+        return data != null ? data.getObject() : null;
     }
 
-    // Получает массив объектов определенного типа
+    // Получает массив объектов указанного типа
     public List<Object> getObjects(ObjectType type) {
-        List<Object> objects = new ArrayList<>();
+        ArrayList<Object> objects = new ArrayList<>();
+
         for (ObjectData data : mObjects) {
-            if (data.getObject().getType() == type) {
-                objects.add(data.getObject());
+            Object object = data.getObject();
+
+            // Добавляем в временный массив, подходящий объект
+            if (object.getType() == type) {
+                objects.add(object);
             }
         }
+
         return objects;
     }
 
@@ -65,14 +74,16 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
                 return data;
             }
         }
+
         return null;
     }
 
     // Удаляет объект
     public void remove(String name) {
         ObjectData data = getObjectData(name);
+
         if (data != null) {
-            // Помечаем объект данных на удаление
+            // Помечаем на удаление
             data.remove();
         }
     }
@@ -86,8 +97,11 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
     // Передает управление от контоллеров ввода объектам
     public void input(Input input) {
         for (ObjectData data : mObjects) {
-            if (data.getObject() instanceof Inputable) {
-                ((Inputable) data.getObject()).input(input);
+            Object object = data.getObject();
+
+            // Передаем управление
+            if (object instanceof Inputable) {
+                ((Inputable) object).input(input);
             }
         }
     }
@@ -95,31 +109,40 @@ public class ObjectManager implements Inputable, Updatable, Renderable {
     @Override
     // Обновляет состояние объектов
     public void update() {
-        // Клонируем массив объектов
-        List<ObjectData> objects = new ArrayList<>(mObjects);
+        // Клонируем оригинальный массив
+        ArrayList<ObjectData> objects = new ArrayList<>(mObjects);
 
         for (ObjectData data : objects) {
             if (data.isRemoved()) {
-                // Удаляем значение из оригинального массива
+                // Удаляем объект данных из оригинального массива
                 mObjects.remove(data);
+                // Исправляем длинну оригинального массива
+                mObjects.trimToSize();
+
                 continue;
             }
-            // Обновляем состояние игровых объектов
-            if (data.getObject() instanceof Updatable) {
-                ((Updatable) data.getObject()).update();
+
+            Object object = data.getObject();
+
+            // Обновляем состояние
+            if (object instanceof Updatable) {
+                ((Updatable) object).update();
             }
         }
 
-        // Удаляем клонированый массив
-        objects = null;
+        // Очищаем временный массив
+        objects.clear();
     }
 
     @Override
     // Отрисовывает объекты
     public void render(Graphics g) {
         for (ObjectData data : mObjects) {
-            if (data.getObject() instanceof Renderable) {
-                ((Renderable) data.getObject()).render(g);
+            Object object = data.getObject();
+
+            // Рисуем
+            if (object instanceof Renderable) {
+                ((Renderable) object).render(g);
             }
         }
     }
