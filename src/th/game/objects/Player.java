@@ -6,21 +6,22 @@ import th.engine.game.Object;
 import th.engine.game.interfaces.Renderable;
 import th.engine.game.interfaces.Inputable;
 import th.engine.graphics.Color;
-import th.engine.graphics.shapes.Circle;
-import th.engine.graphics.shapes.Rectangle;
 import th.engine.input.Keyboard;
 import th.game.ObjectType;
+import th.game.shapes.SPlayer;
 
 /**
  * Класс игрока
  */
 public class Player extends Object implements Inputable, Renderable {
 
+    protected SPlayer mPlayerShape;
     protected int mDirectionOfMove = 0;
-    protected float mSpeed = 1.0f;
+    protected float mSpeed = 0.0f;
 
     public Player(float xPos, float yPos) {
         super(xPos, yPos, ObjectType.Player);
+        mPlayerShape = new SPlayer(new Color(250, 250, 250), xPos, yPos);
     }
 
     // Устанавливает направление движения вверх
@@ -66,11 +67,7 @@ public class Player extends Object implements Inputable, Renderable {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(new Color(250, 250, 250));
-        // Плечи
-        g.draw(new Rectangle(36, 10), mXPos, mYPos + 5);
-        // Голова
-        g.draw(new Circle(10), mXPos + 8, mYPos);
+        mPlayerShape.draw(g);
     }
 }
 
